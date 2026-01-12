@@ -6,33 +6,33 @@ import { AnimatedSection } from "@/components/animated-section"
 
 export function CTASection() {
   return (
-    <AnimatedSection id="contact" className="px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-28 bg-card">
+    <AnimatedSection id="contact" className="px-4 sm:px-6 md:px-6 lg:px-8 py-6 bg-card scroll-mt-24">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-3 sm:mb-4 text-balance leading-tight text-foreground">
+        <h2 className="text-base md:text-lg font-semibold tracking-tight mb-2 text-balance leading-tight text-foreground">
           NYSDOH 405.46 requires 72-hour incident reporting.
           <br className="hidden sm:block" />
           <span className="text-muted-foreground"> Manual tracking fails. Cortex automates it.</span>
         </h2>
 
-        <p className="text-sm sm:text-base text-muted-foreground mb-8 sm:mb-10 max-w-xl mx-auto leading-relaxed">
+        <p className="text-[11px] text-muted-foreground mb-4 max-w-xl mx-auto leading-relaxed">
           Schedule a technical review with our engineering team. We&apos;ll walk through your Cisco infrastructure and
           demonstrate detection capabilities on a test VLAN.
         </p>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 justify-center">
+        <div className="flex flex-col gap-2 sm:flex-row sm:gap-3 justify-center">
           <Button
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium tracking-wide min-h-[48px] sm:min-h-[44px] h-auto py-3 px-6 sm:px-8 text-sm sm:text-base w-full sm:w-auto"
+            size="sm"
+            className="w-full sm:w-auto text-xs"
           >
             SCHEDULE TECHNICAL REVIEW
-            <ArrowRight className="w-4 h-4 ml-2" />
+            <ArrowRight className="w-3 h-3 ml-1.5" />
           </Button>
           <Button
-            size="lg"
+            size="sm"
             variant="outline"
-            className="border-border text-foreground hover:bg-muted font-medium tracking-wide min-h-[48px] sm:min-h-[44px] h-auto py-3 px-6 sm:px-8 text-sm sm:text-base w-full sm:w-auto bg-transparent"
+            className="w-full sm:w-auto bg-transparent border-border text-foreground hover:bg-muted text-xs"
           >
-            <FileText className="w-4 h-4 mr-2" />
+            <FileText className="w-3 h-3 mr-1.5" />
             DOWNLOAD WHITEPAPER
           </Button>
         </div>

@@ -1,6 +1,8 @@
 "use client"
 
 import { AnimatedSection } from "@/components/animated-section"
+import { Clock, FileText, Server, ShieldCheck } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const audiences = [
   {
@@ -33,74 +35,61 @@ const audiences = [
 
 export function AudienceSection() {
   return (
-    <AnimatedSection className="px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-28 bg-background">
+    <AnimatedSection className="px-4 sm:px-6 md:px-6 lg:px-8 py-6 bg-clinical-slate">
       <div className="max-w-5xl mx-auto">
-        <div className="mb-4 sm:mb-6">
-          <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">Target Audience</span>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mt-3 sm:mt-4 text-foreground">
+        <div className="mb-8 text-center">
+          <span className="text-micro font-mono text-muted-foreground">Target Audience</span>
+          <h2 className="text-h2 mt-3 text-foreground">
             Who Uses Cortex
           </h2>
         </div>
 
-        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8 sm:mb-10 max-w-3xl">
-          Built for healthcare security professionals who need to meet strict regulatory deadlines without adding
-          complexity or headcount.
-        </p>
-
-        <div className="border border-border bg-card">
-          {/* Table Header - Hidden on mobile */}
-          <div className="hidden sm:grid sm:grid-cols-12 gap-4 px-4 py-3 bg-muted/50 border-b border-border font-mono text-xs text-muted-foreground uppercase tracking-wider">
-            <div className="col-span-3">Role</div>
-            <div className="col-span-6">What You Get</div>
-            <div className="col-span-3">Key Benefit</div>
-          </div>
-
-          {/* Audience Rows */}
-          <div className="relative">
-            {/* Vertical bus line connecting all rows */}
-            <div className="absolute left-[1.35rem] sm:left-6 top-6 bottom-6 w-px bg-border" />
-
-            {audiences.map((audience, index) => (
-              <div
+        {/* Audience Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {audiences.map((audience, index) => {
+            const Icon = [Clock, FileText, Server, ShieldCheck][index]
+            return (
+              <Card
                 key={audience.id}
-                className={`
-                  group relative
-                  flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:gap-4
-                  px-4 py-4 sm:py-5
-                  hover:bg-sky-50 dark:hover:bg-sky-950/20
-                  transition-colors duration-200
-                  ${index !== audiences.length - 1 ? "border-b border-border" : ""}
-                `}
+                className="group relative flex flex-col h-full hover:shadow-md transition-shadow duration-200"
               >
-                {/* Column 1: Role */}
-                <div className="sm:col-span-3 flex items-center gap-3">
-                  {/* Status dot - appears green on hover */}
-                  <div className="relative z-10 w-2.5 h-2.5 rounded-full bg-border group-hover:bg-green-500 transition-colors duration-200 flex-shrink-0" />
+                <CardHeader>
+                  <CardTitle className="text-sm text-primary">
+                    {audience.role}
+                  </CardTitle>
+                </CardHeader>
 
-                  <div className="min-w-0">
-                    <span className="font-mono text-[10px] sm:text-xs text-muted-foreground block">{audience.id}</span>
-                    <span className="text-sm sm:text-base text-foreground font-semibold block">{audience.role}</span>
+                <CardContent className="flex flex-col flex-grow">
+                  <p className="text-body-sm text-muted-foreground mb-4 flex-grow">
+                    {audience.benefit}
+                  </p>
+
+                  <div className="mt-auto pt-3 border-t border-border/50">
+                    <div className="flex items-center gap-2.5">
+                      <div className="p-1.5 rounded-md bg-secondary/10 group-hover:bg-primary/10 transition-colors">
+                        <Icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                      </div>
+                      <div>
+                        <span className="text-xs font-medium text-foreground">
+                          {audience.highlight}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
 
-                {/* Column 2: Benefit Description */}
-                <div className="sm:col-span-6 flex items-center pl-5 sm:pl-0">
-                  <p className="text-sm text-muted-foreground leading-relaxed">{audience.benefit}</p>
-                </div>
-
-                {/* Column 3: Key Highlight */}
-                <div className="sm:col-span-3 flex items-center pl-5 sm:pl-0">
-                  <span className="inline-flex items-center px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[10px] sm:text-xs text-primary font-medium">
-                    {audience.highlight}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="mt-8 text-center">
+          <p className="text-body-sm text-text-body max-w-3xl mx-auto">
+            From the C-Suite to the server room, Cortex unifies compliance and security operations into a single pane of glass. Whether you&apos;re a CISO tracking regulatory deadlines, a Compliance Officer preparing for audits, an IT Director managing infrastructure, or a Risk Manager seeking formal verification—Cortex delivers the automated intelligence you need to stay ahead of threats and regulations without adding headcount.
+          </p>
         </div>
       </div>
-
-      <div className="ecg-divider mt-12 sm:mt-16 md:mt-20 max-w-5xl mx-auto" />
     </AnimatedSection>
   )
 }
+
+

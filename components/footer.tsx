@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 bg-secondary text-secondary-foreground relative overflow-hidden">
+    <footer className="px-4 sm:px-6 md:px-8 lg:px-12 py-12 md:py-16 bg-secondary text-secondary-foreground relative overflow-hidden">
       <div className="absolute inset-0 grid-overlay" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
@@ -15,25 +15,25 @@ export function Footer() {
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-4 gap-y-2 sm:gap-6 text-sm">
             <a
               href="#"
-              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors min-h-[44px] sm:min-h-0 flex items-center"
+              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors flex items-center"
             >
               Documentation
             </a>
             <a
               href="#"
-              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors min-h-[44px] sm:min-h-0 flex items-center"
+              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors flex items-center"
             >
               GitHub
             </a>
             <a
               href="#"
-              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors min-h-[44px] sm:min-h-0 flex items-center"
+              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors flex items-center"
             >
               Security
             </a>
             <a
               href="#"
-              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors min-h-[44px] sm:min-h-0 flex items-center"
+              className="py-2 sm:py-0 text-secondary-foreground/60 hover:text-secondary-foreground transition-colors flex items-center"
             >
               Contact
             </a>

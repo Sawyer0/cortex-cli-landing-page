@@ -87,10 +87,15 @@ export default function Home() {
       </header>
       <HeroSection />
       <MandateSection />
+      <div className="bg-clinical-slate py-6"><div className="ecg-divider on-slate max-w-5xl mx-auto" /></div>
       <DetectionSection />
+      <div className="bg-card py-6"><div className="ecg-divider on-white max-w-5xl mx-auto" /></div>
       <WorkflowSection />
+      <div className="bg-clinical-slate py-6"><div className="ecg-divider on-slate max-w-5xl mx-auto" /></div>
       <SecuritySection />
+      <div className="bg-card py-6"><div className="ecg-divider on-white max-w-5xl mx-auto" /></div>
       <AudienceSection />
+      <div className="bg-clinical-slate py-6"><div className="ecg-divider on-slate max-w-5xl mx-auto" /></div>
       <ProofSection />
       <CTASection />
       <Footer />
