@@ -16,15 +16,23 @@ export function HeroSection() {
   useEffect(() => {
     setIsVisible(true)
     let index = 0
-    const timer = setInterval(() => {
-      setTypedText(fullText.slice(0, index + 1))
-      index++
-      if (index > fullText.length) {
-        clearInterval(timer)
-        startInitialization()
-      }
-    }, 60)
-    return () => clearInterval(timer)
+    let timer: NodeJS.Timeout
+
+    const startTyping = setTimeout(() => {
+      timer = setInterval(() => {
+        setTypedText(fullText.slice(0, index + 1))
+        index++
+        if (index > fullText.length) {
+          clearInterval(timer)
+          startInitialization()
+        }
+      }, 60)
+    }, 1200) // Delay to wait for hydration/fade-in
+
+    return () => {
+      clearTimeout(startTyping)
+      clearInterval(timer)
+    }
   }, [])
 
   const startInitialization = async () => {
