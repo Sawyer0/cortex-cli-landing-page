@@ -10,38 +10,41 @@ import { AudienceSection } from "@/components/audience-section"
 import { ProofSection } from "@/components/proof-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+import { SectionDivider } from "@/components/section-divider"
+import { NetflowBackground } from "@/components/ui/netflow-background"
 import { Menu, X } from "lucide-react"
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <main className="min-h-screen">
-      <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+    <main className="min-h-screen relative">
+      <NetflowBackground className="fixed inset-0 opacity-60 pointer-events-none z-0" />
+      <header className="sticky top-0 z-50 bg-secondary/80 backdrop-blur supports-[backdrop-filter]:bg-secondary/60 border-b border-white/5">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 h-14 sm:h-16 flex items-center justify-between">
-          <span className="font-mono text-base sm:text-lg font-semibold tracking-tight text-foreground">
+          <span className="font-mono text-base sm:text-lg font-semibold tracking-tight text-secondary-foreground">
             CORTEX-CLI
           </span>
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#mandate" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#mandate" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
               Compliance
             </a>
-            <a href="#detection" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#detection" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
               Detection
             </a>
-            <a href="#security" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#security" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
               Security
             </a>
-            <a href="#contact" className="text-sm font-medium text-foreground">
+            <a href="#contact" className="text-sm font-medium text-secondary-foreground">
               Contact
             </a>
           </nav>
 
           {/* Mobile menu button - 44px touch target */}
           <button
-            className="md:hidden p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="md:hidden p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-secondary-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -87,16 +90,27 @@ export default function Home() {
       </header>
       <HeroSection />
       <MandateSection />
-      <div className="bg-clinical-slate py-6"><div className="ecg-divider on-slate max-w-5xl mx-auto" /></div>
+
+      <SectionDivider variant="slate-to-card" />
+
       <DetectionSection />
-      <div className="bg-card py-6"><div className="ecg-divider on-white max-w-5xl mx-auto" /></div>
+
       <WorkflowSection />
-      <div className="bg-clinical-slate py-6"><div className="ecg-divider on-slate max-w-5xl mx-auto" /></div>
+
+      <SectionDivider variant="slate-to-card" />
+
       <SecuritySection />
-      <div className="bg-card py-6"><div className="ecg-divider on-white max-w-5xl mx-auto" /></div>
+
+      <SectionDivider variant="card-to-slate" />
+
       <AudienceSection />
-      <div className="bg-clinical-slate py-6"><div className="ecg-divider on-slate max-w-5xl mx-auto" /></div>
+
+      <SectionDivider variant="slate-to-secondary" />
+
       <ProofSection />
+
+      <SectionDivider variant="secondary-to-card" />
+
       <CTASection />
       <Footer />
     </main>

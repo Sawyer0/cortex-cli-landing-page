@@ -7,7 +7,7 @@ export function SecuritySection() {
   return (
     <AnimatedSection
       id="security"
-      className="px-4 sm:px-6 md:px-6 lg:px-8 py-16 md:py-24 bg-card relative overflow-hidden scroll-mt-24"
+      className="px-4 sm:px-6 md:px-8 lg:px-12 section-padding text-secondary-foreground relative overflow-hidden scroll-mt-24 z-10"
     >
       <div className="max-w-5xl mx-auto">
 
@@ -15,38 +15,38 @@ export function SecuritySection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 items-center">
           <div className="flex flex-col gap-6">
             <div>
-              <span className="text-micro font-mono text-muted-foreground">Security Model</span>
-              <h2 className="text-h2 mt-3 text-foreground">Zero New Hardware. Zero Network. Zero Cloud.</h2>
+              <span className="text-micro font-mono text-secondary-foreground/60">Security Model</span>
+              <h2 className="text-h2 mt-3 text-secondary-foreground">Zero New Hardware. Zero Network. Zero Cloud.</h2>
             </div>
 
             {/* Visual: Canary Agent */}
-            <div className="border border-border bg-background">
-              <div className="bg-muted border-b border-border px-2 py-1 flex items-center gap-1.5">
-                <Shield className="w-3 h-3 text-foreground flex-shrink-0" />
-                <span className="text-micro font-mono text-muted-foreground">
+            <div className="border border-secondary-foreground/10 bg-secondary-foreground/5">
+              <div className="bg-secondary-foreground/10 border-b border-secondary-foreground/10 px-2 py-1 flex items-center gap-1.5">
+                <Shield className="w-3 h-3 text-secondary-foreground flex-shrink-0" />
+                <span className="text-micro font-mono text-secondary-foreground/60">
                   Isolated Monitoring Agent
                 </span>
               </div>
 
               <div className="p-2">
-                <div className="border border-dashed border-muted-foreground/40 p-2">
+                <div className="border border-dashed border-secondary-foreground/20 p-2">
                   <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1.5">
                       <div className="relative">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         <div className="absolute inset-0 w-2 h-2 bg-green-500 rounded-full animate-ping opacity-75" />
                       </div>
-                      <Eye className="w-3 h-3 text-foreground" />
+                      <Eye className="w-3 h-3 text-secondary-foreground" />
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-1.5 mb-0.5">
-                        <span className="font-mono text-ui-xs font-semibold text-foreground">CANARY AGENT</span>
-                        <span className="font-mono text-[9px] px-1.5 py-0.5 bg-green-500/20 text-green-600 border border-green-500/40">
+                        <span className="font-mono text-ui-xs font-semibold text-secondary-foreground">CANARY AGENT</span>
+                        <span className="font-mono text-ui-xs px-1.5 py-0.5 bg-green-500/20 text-green-600 border border-green-500/40">
                           ACTIVE
                         </span>
                       </div>
-                      <p className="font-mono text-[9px] text-muted-foreground leading-relaxed">
+                      <p className="font-mono text-ui-xs text-secondary-foreground/60 leading-relaxed">
                         Passive/Self monitoring · Zero network access
                       </p>
                     </div>
@@ -67,11 +67,11 @@ export function SecuritySection() {
               </div>
             </div>
 
-            <p className="text-body-sm text-text-body">
+            <p className="text-body text-secondary-foreground/80">
               If compromised, the agent executes a &quot;scream-and-die&quot; protocol—alerting the dashboard before instantly terminating.
             </p>
           </div>
-          <p className="text-body-sm text-text-body">
+          <p className="text-body text-secondary-foreground/80">
             In an era where hospital margins are thin and technical teams are stretched to their limit, the last thing you need is another expensive hardware appliance to rack, stack, and manage. Cortex fundamentally changes the economics of cybersecurity by transforming your existing network infrastructure into an intelligent defense layer. By running as a lightweight, ephemeral container on the Cisco Access Points you already own, we eliminate the need for costly capital expenditures and complex, multi-month deployments. This &quot;Zero New Hardware&quot; approach doesn&apos;t just save money—it drastically reduces your attack surface, providing robust Edge Protection that stops ransomware at the perimeter before it can ever threaten critical patient care systems.
           </p>
         </div>
@@ -82,29 +82,29 @@ export function SecuritySection() {
         {/* 3 Pillars of Security */}
         <div className="grid gap-8 md:grid-cols-3 relative">
           {/* Vertical divider lines for desktop */}
-          <div className="absolute hidden md:block top-2 bottom-2 left-1/3 w-px bg-border" />
-          <div className="absolute hidden md:block top-2 bottom-2 right-1/3 w-px bg-border" />
+          <div className="absolute hidden md:block top-2 bottom-2 left-1/3 w-px bg-secondary-foreground/10" />
+          <div className="absolute hidden md:block top-2 bottom-2 right-1/3 w-px bg-secondary-foreground/10" />
 
           {/* Pillar 1: Edge Protection */}
           <div className="space-y-1 px-1">
-            <h3 className="text-xs font-semibold text-foreground">The &quot;Why&quot;</h3>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
+            <h3 className="text-xs font-semibold text-secondary-foreground">The &quot;Why&quot;</h3>
+            <p className="text-body-sm text-secondary-foreground/60 leading-relaxed">
               Modern ransomware targets IoT/OT devices at the network edge. Cortex stops threats before they enter the core.
             </p>
           </div>
 
           {/* Pillar 2: Zero Network */}
           <div className="space-y-1 px-1">
-            <h3 className="text-xs font-semibold text-foreground">The &quot;How&quot;</h3>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
+            <h3 className="text-xs font-semibold text-secondary-foreground">The &quot;How&quot;</h3>
+            <p className="text-body-sm text-secondary-foreground/60 leading-relaxed">
               The agent has <strong>no network access</strong>. It can&apos;t scan, spread, or communicate outbound.
             </p>
           </div>
 
           {/* Pillar 3: Zero Cloud */}
           <div className="space-y-1 px-1">
-            <h3 className="text-xs font-semibold text-foreground">The &quot;Where&quot;</h3>
-            <p className="text-[11px] text-muted-foreground leading-relaxed">
+            <h3 className="text-xs font-semibold text-secondary-foreground">The &quot;Where&quot;</h3>
+            <p className="text-body-sm text-secondary-foreground/60 leading-relaxed">
               All processing happens locally on the hardware. No patient data ever leaves the premise.
             </p>
           </div>

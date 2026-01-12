@@ -1,8 +1,6 @@
 export function Footer() {
   return (
-    <footer className="px-4 sm:px-6 md:px-8 lg:px-12 py-12 md:py-16 bg-secondary text-secondary-foreground relative overflow-hidden">
-      <div className="absolute inset-0 grid-overlay" />
-
+    <footer className="px-4 sm:px-6 md:px-8 lg:px-12 py-12 md:py-16 text-secondary-foreground relative overflow-hidden z-10">
       <div className="relative z-10 max-w-5xl mx-auto">
         <div className="flex flex-col gap-4 sm:gap-6 md:flex-row md:items-center md:justify-between">
           <div className="min-w-0">
@@ -42,10 +40,10 @@ export function Footer() {
 
         {/* Regulatory References */}
         <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-secondary-foreground/20">
-          <p className="font-mono text-[10px] sm:text-xs text-secondary-foreground/60 mb-2 sm:mb-3">
+          <p className="font-mono text-ui-xs text-secondary-foreground/60 mb-2 sm:mb-3">
             Regulatory References
           </p>
-          <div className="flex flex-wrap gap-x-3 gap-y-1 sm:gap-4 font-mono text-[10px] sm:text-xs text-secondary-foreground/60">
+          <div className="flex flex-wrap gap-x-3 gap-y-1 sm:gap-4 font-mono text-ui-xs text-secondary-foreground/60">
             <span>NYSDOH 405.46(b)(5)</span>
             <span>NYSDOH 405.46(n)(1)</span>
             <span>NYSDOH 405.46(g)(2)</span>
@@ -54,7 +52,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-6 sm:mt-8 text-[10px] sm:text-xs text-secondary-foreground/50">
+        <div className="mt-6 sm:mt-8 text-ui-xs text-secondary-foreground/50">
           <p>© 2025 Cortex-CLI. All rights reserved.</p>
           <p className="mt-1">This software is mission-critical. Every bug could impact patient safety.</p>
         </div>

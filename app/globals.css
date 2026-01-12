@@ -111,28 +111,35 @@
 
 @layer utilities {
   .text-h1 {
-    @apply text-3xl md:text-4xl font-semibold tracking-tight;
+    @apply text-2xl md:text-3xl font-semibold tracking-tight;
   }
+
   .text-h2 {
     @apply text-xl md:text-2xl font-semibold tracking-tight;
   }
+
   .text-h3 {
-    @apply text-base sm:text-lg font-semibold;
+    @apply text-base md:text-lg font-semibold;
   }
+
   .text-h4 {
     @apply text-sm font-semibold;
   }
-  
+
   /* Standard Section Spacing */
   .section-padding {
-    @apply py-10 md:py-16;
+    @apply py-20 md:py-32;
   }
-  
+
   /* Typography Utilities */
-  .text-body-sm {
-    @apply text-[13px] leading-relaxed;
+  .text-body {
+    @apply text-sm md:text-base leading-relaxed;
   }
-  
+
+  .text-body-sm {
+    @apply text-xs md:text-sm leading-relaxed;
+  }
+
   .text-micro {
     @apply text-[10px] uppercase tracking-widest;
   }
@@ -146,17 +153,21 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-secondary text-secondary-foreground;
   }
+
   h1 {
-    @apply text-3xl md:text-4xl font-semibold tracking-tight;
+    @apply text-2xl md:text-3xl font-semibold tracking-tight;
   }
+
   h2 {
     @apply text-xl md:text-2xl font-semibold tracking-tight;
   }
+
   h3 {
-    @apply text-base sm:text-lg font-semibold;
+    @apply text-base md:text-lg font-semibold;
   }
 }
 
@@ -165,6 +176,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -178,40 +190,11 @@
 
 /* Improve touch targets on mobile */
 @media (pointer: coarse) {
+
   button,
   a {
     min-height: 44px;
   }
-}
-
-/* ECG Line Divider */
-.ecg-divider {
-  height: 1px;
-  background-color: #94a3b8;
-  position: relative;
-  opacity: 0.6;
-}
-
-.ecg-divider::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 20px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20'%3E%3Cpath d='M0 10 L15 10 L20 2 L25 18 L30 10 L35 10 L38 6 L42 14 L45 10 L60 10' stroke='%2394a3b8' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: var(--background);
-}
-
-.ecg-divider.on-white::before {
-  background-color: var(--card);
-}
-
-.ecg-divider.on-slate::before {
-  background-color: var(--clinical-slate);
 }
 
 /* Grid overlay for hero */
@@ -226,6 +209,7 @@
   0% {
     stroke-dashoffset: 800;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -242,18 +226,25 @@
     left: 0%;
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   45% {
-    left: 45%; /* Arrive at middle node */
+    left: 45%;
+    /* Arrive at middle node */
   }
+
   55% {
-    left: 55%; /* Leave middle node */
+    left: 55%;
+    /* Leave middle node */
   }
+
   90% {
     opacity: 1;
   }
+
   100% {
     left: 100%;
     opacity: 0;
