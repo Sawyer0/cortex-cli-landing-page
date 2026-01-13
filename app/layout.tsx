@@ -17,18 +17,27 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Cortex-CLI | Autonomous Healthcare Cybersecurity Compliance",
+  title: "Listrum (Ls-443) | Network Sterility for Healthcare",
   description:
-    "Autonomous ransomware detection and compliance reporting for hospital networks. Meet NYSDOH 405.46 and CIRCIA 72-hour reporting deadlines automatically.",
+    "Listrum deploys surgical-grade sterility at the network edge. Our deterministic agent treats ransomware as digital sepsis. Its formal verification ensures it never guesses.",
   keywords: [
+    "ransomware prevention healthcare",
+    "NYSDOH 405.46 compliance",
+    "CIRCIA compliance software",
     "healthcare cybersecurity",
-    "NYSDOH 405.46",
-    "CIRCIA",
-    "ransomware detection",
-    "compliance automation",
-    "hospital security",
+    "edge security Cisco IOx",
+    "deterministic threat detection",
+    "formal verification cybersecurity",
+    "hospital ransomware protection",
+    "72-hour incident reporting",
+    "network sterility",
   ],
-    generator: 'v0.app'
+  openGraph: {
+    title: "Listrum: The Sterile Field",
+    description: "Stop ransomware at the edge. Deterministic compliance for NYSDOH 405.46 and CIRCIA. No cloud. No hallucinations.",
+    type: "website",
+  },
+  generator: 'v0.app'
 }
 
 export const viewport: Viewport = {

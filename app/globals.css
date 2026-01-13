@@ -62,6 +62,9 @@
   --bio-cyan: #06B6D4;
   --bio-cyan-light: #E0F2FE;
   --text-body: #475569;
+  
+  /* Brand Colors */
+  --carbon: #1e293b;
 }
 
 @theme inline {
@@ -107,6 +110,7 @@
   --color-bio-cyan: var(--bio-cyan);
   --color-bio-cyan-light: var(--bio-cyan-light);
   --color-text-body: var(--text-body);
+  --color-carbon: var(--carbon);
 }
 
 @layer utilities {

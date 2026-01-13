@@ -41,13 +41,13 @@ export function SecuritySection() {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-1.5 mb-0.5">
-                        <span className="font-mono text-ui-xs font-semibold text-secondary-foreground">CANARY AGENT</span>
+                        <span className="font-mono text-ui-xs font-semibold text-secondary-foreground">STERILITY MONITOR</span>
                         <span className="font-mono text-ui-xs px-1.5 py-0.5 bg-green-500/20 text-green-600 border border-green-500/40">
                           ACTIVE
                         </span>
                       </div>
                       <p className="font-mono text-ui-xs text-secondary-foreground/60 leading-relaxed">
-                        Passive/Self monitoring · Zero network access
+                        Passive observation · Zero network access · Self-terminating
                       </p>
                     </div>
                   </div>
@@ -68,11 +68,13 @@ export function SecuritySection() {
             </div>
 
             <p className="text-body text-secondary-foreground/80">
-              If compromised, the agent executes a &quot;scream-and-die&quot; protocol—alerting the dashboard before instantly terminating.
+              If compromised, the agent executes a &quot;scream-and-die&quot; protocol. This alerts the dashboard before instantly terminating. No persistence. No lateral movement. No risk.
             </p>
           </div>
           <p className="text-body text-secondary-foreground/80">
-            In an era where hospital margins are thin and technical teams are stretched to their limit, the last thing you need is another expensive hardware appliance to rack, stack, and manage. Cortex fundamentally changes the economics of cybersecurity by transforming your existing network infrastructure into an intelligent defense layer. By running as a lightweight, ephemeral container on the Cisco Access Points you already own, we eliminate the need for costly capital expenditures and complex, multi-month deployments. This &quot;Zero New Hardware&quot; approach doesn&apos;t just save money—it drastically reduces your attack surface, providing robust Edge Protection that stops ransomware at the perimeter before it can ever threaten critical patient care systems.
+            The safest agent is the one that cannot spread.<br /><br />
+            Listrum runs as an ephemeral container on Cisco IOx. It has no network stack. It cannot scan. It cannot beacon. It cannot exfiltrate.<br /><br />
+            All processing is local. Patient data never leaves the premise. No third-party dependencies. No cloud outages.
           </p>
         </div>
 
@@ -87,25 +89,25 @@ export function SecuritySection() {
 
           {/* Pillar 1: Edge Protection */}
           <div className="space-y-1 px-1">
-            <h3 className="text-xs font-semibold text-secondary-foreground">The &quot;Why&quot;</h3>
+            <h3 className="text-xs font-semibold text-secondary-foreground">Zero Hardware</h3>
             <p className="text-body-sm text-secondary-foreground/60 leading-relaxed">
-              Modern ransomware targets IoT/OT devices at the network edge. Cortex stops threats before they enter the core.
+              Deploys on infrastructure you already own. No appliances. No rack space. No CapEx.
             </p>
           </div>
 
           {/* Pillar 2: Zero Network */}
           <div className="space-y-1 px-1">
-            <h3 className="text-xs font-semibold text-secondary-foreground">The &quot;How&quot;</h3>
+            <h3 className="text-xs font-semibold text-secondary-foreground">Zero Cloud</h3>
             <p className="text-body-sm text-secondary-foreground/60 leading-relaxed">
-              The agent has <strong>no network access</strong>. It can&apos;t scan, spread, or communicate outbound.
+              All processing is local. Patient data never leaves the premise. No third-party dependencies.
             </p>
           </div>
 
           {/* Pillar 3: Zero Cloud */}
           <div className="space-y-1 px-1">
-            <h3 className="text-xs font-semibold text-secondary-foreground">The &quot;Where&quot;</h3>
+            <h3 className="text-xs font-semibold text-secondary-foreground">Zero Network</h3>
             <p className="text-body-sm text-secondary-foreground/60 leading-relaxed">
-              All processing happens locally on the hardware. No patient data ever leaves the premise.
+              The agent is intentionally network-blind. It observes metadata. It cannot initiate connections.
             </p>
           </div>
         </div>

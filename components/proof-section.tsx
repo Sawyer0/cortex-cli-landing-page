@@ -10,12 +10,14 @@ export function ProofSection() {
         <div className="mb-10 md:mb-12">
           <span className="text-micro font-mono text-secondary-foreground/60">Verification</span>
           <h2 className="text-h2 mt-1 text-secondary-foreground">
-            System Integrity Diagnostic
+            Formally Verified. Mathematically Proven.
           </h2>
         </div>
 
         <p className="text-body text-secondary-foreground/80 leading-relaxed mb-12 max-w-3xl">
-          In clinical environments, &quot;probably right&quot; is never enough. While generative AI models rely on probabilistic guesswork that can lead to dangerous hallucinations, Cortex-CLI is built on a foundation of formal verification. We use mathematical logical proofs to validate every state transition in our decision engine at compile time. This ensures that our agent behaves with absolute determinism—producing the exact same security response for the same threat input, every single time, without ambiguity or deviation.
+          In surgery, &quot;probably sterile&quot; means infected. In compliance, &quot;probably detected&quot; means liable.<br /><br />
+          Listrum uses <strong className="text-secondary-foreground font-medium">Verus</strong>, a formal verification system, to prove our state machine logic correct at compile time. Not at runtime. <strong className="text-secondary-foreground font-medium">At compile time.</strong><br /><br />
+          This is not AI. There is no training data. There are no edge cases. The proof is the product.
         </p>
 
 
@@ -30,29 +32,21 @@ export function ProofSection() {
                   <div className="flex items-center gap-1.5 mb-0.5">
 
                     <span className="text-xs font-semibold text-primary">
-                      No Hallucinations
+                      Deterministic
                     </span>
                   </div>
                   <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Formally verified FSM proved with Verus. Mathematical certainty, not probability.
+                    Same input → same output. No temperature. No randomness. No probability.
                   </p>
                 </div>
                 <div className="group">
                   <div className="flex items-center gap-1.5 mb-0.5">
                     <span className="text-xs font-semibold text-primary">
-                      Mathematically Proven
+                      Proven
                     </span>
                   </div>
                   <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Correctness verified at compile time. Zero undefined behavior paths.
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-xs font-semibold text-primary">Predictable</span>
-                  </div>
-                  <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Same input → same output. No temperature parameter. No randomness.
+                    Logic verified with mathematical proof. Every state transition validated at compile time.
                   </p>
                 </div>
                 <div className="group">
@@ -60,7 +54,15 @@ export function ProofSection() {
                     <span className="text-xs font-semibold text-primary">Auditable</span>
                   </div>
                   <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Every decision traces to source code and telemetry. Full chain of custody.
+                    Every decision traces to source code. Every log entry traces to telemetry. Full chain of custody.
+                  </p>
+                </div>
+                <div className="group">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="text-xs font-semibold text-primary">Immutable</span>
+                  </div>
+                  <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
+                    6 years of Merkle-tree storage. Tamper-evident by design. Cryptographic proof of integrity.
                   </p>
                 </div>
               </div>

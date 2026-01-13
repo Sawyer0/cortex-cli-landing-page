@@ -9,27 +9,27 @@ const audiences = [
     id: "01",
     role: "Hospital CISOs",
     benefit:
-      "Stop manually tracking incident timelines. Automate regulatory deadline adherence without adding headcount.",
+      "Automate the 72-hour clock. Stop tracking deadlines in spreadsheets. Start proving compliance with evidence.",
     highlight: "72-hour automation",
   },
   {
     id: "02",
     role: "Compliance Officers",
-    benefit: "Automate NYSDOH 405.46 and CIRCIA reporting with audit-ready logs. 6-year retention built in.",
-    highlight: "Audit-ready logs",
+    benefit: "NYSDOH 405.46. CIRCIA 2026. Pre-filled reports. Audit-ready logs. 6-year retention. Merkle integrity.",
+    highlight: "Audit-ready",
   },
   {
     id: "03",
     role: "IT Directors",
     benefit:
-      "Deploy on existing Cisco infrastructure. No new hardware, no capital expenditure, no network reconfiguration.",
-    highlight: "Zero new hardware",
+      "No new hardware. No network changes. Deploy on existing Cisco infrastructure.",
+    highlight: "Zero CapEx",
   },
   {
     id: "04",
     role: "Risk Managers",
-    benefit: "Get formal, auditable proof that your incident response meets regulatory requirements.",
-    highlight: "Formal verification",
+    benefit: "Formal verification. Mathematical proof. Deterministic response. No AI. No guessing.",
+    highlight: "Verifiable",
   },
 ]
 
@@ -38,9 +38,9 @@ export function AudienceSection() {
     <AnimatedSection className="px-4 sm:px-6 md:px-8 lg:px-12 section-padding text-secondary-foreground relative z-10">
       <div className="max-w-5xl mx-auto">
         <div className="mb-10 md:mb-12 text-center">
-          <span className="text-micro font-mono text-secondary-foreground/60">Target Audience</span>
+          <span className="text-micro font-mono text-secondary-foreground/60">Roles</span>
           <h2 className="text-h2 mt-3 text-secondary-foreground">
-            Who Uses Cortex
+            Who Needs Listrum
           </h2>
         </div>
 
@@ -84,7 +84,7 @@ export function AudienceSection() {
 
         <div className="mt-12 text-center">
           <p className="text-body text-secondary-foreground/80 max-w-3xl mx-auto">
-            From the C-Suite to the server room, Cortex unifies compliance and security operations into a single pane of glass. Whether you&apos;re a CISO tracking regulatory deadlines, a Compliance Officer preparing for audits, an IT Director managing infrastructure, or a Risk Manager seeking formal verification—Cortex delivers the automated intelligence you need to stay ahead of threats and regulations without adding headcount.
+            One platform. Four roles. Zero ambiguity.
           </p>
         </div>
       </div>

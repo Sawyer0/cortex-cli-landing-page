@@ -1,0 +1,6 @@
+<svg width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="120" fill="rgba(30, 41, 59, 0.05)" stroke="rgba(30, 41, 59, 0.1)" stroke-width="1"/>
+  <text x="8" y="16" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-weight="500" font-size="10" fill="#1e293b">443</text>
+  <text x="50" y="75" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="bold" font-size="40" fill="#d97706">Ls</text>
+  <text x="50" y="105" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="10" fill="#1e293b">Listrum</text>
+</svg>

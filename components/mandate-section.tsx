@@ -12,19 +12,14 @@ export function MandateSection() {
     >
       <div className="max-w-5xl mx-auto">
         <div className="mb-10 md:mb-12">
-          <span className="text-micro font-mono text-secondary-foreground/60">Regulatory Context</span>
+          <span className="text-micro font-mono text-secondary-foreground/60">The Problem</span>
           <h2 className="text-h2 mt-1 text-secondary-foreground">
-            The Mandate
+            Networks Are Dirty.
           </h2>
         </div>
 
         <p className="text-body text-secondary-foreground/80 leading-relaxed mb-12 max-w-3xl">
-          <strong className="text-secondary-foreground font-semibold">
-            The 2025 &quot;Ransomware Paradox&quot; redefined the threat landscape: while global attack volume surged
-            ~40%, average payouts plummeted 91% as the industry pivoted to resilience.
-          </strong>{" "}
-          With 60% of providers now recovering in under a week, the 72-hour reporting window is no longer just a
-          mandate—it&apos;s the operational baseline of the new &quot;Recovery Economy&quot;.
+          Modern ransomware attacks typically enter through vulnerable edge devices and propagate laterally across network segments. Like a biological infection spreading through a system, these attacks move from initial compromise to critical infrastructure. Prevention requires maintaining network sterility at entry points rather than relying solely on post-infection remediation.
         </p>
 
         <div className="grid gap-6 md:gap-8 md:grid-cols-3">
@@ -37,8 +32,7 @@ export function MandateSection() {
               <div className="flex-1 min-w-0">
                 <h3 className="text-h4 font-semibold text-secondary-foreground mb-0.5">NYSDOH 405.46</h3>
                 <p className="text-body-sm text-secondary-foreground/70 leading-relaxed">
-                  New York hospitals, nursing homes, and clinics must report qualifying cybersecurity incidents within
-                  72 hours of determination. Fines for non-compliance accrue daily.
+                  New York mandates 72-hour incident reporting. Fines accrue daily. The clock starts when you detect.
                 </p>
               </div>
             </CardContent>
@@ -53,8 +47,7 @@ export function MandateSection() {
               <div className="flex-1 min-w-0">
                 <h3 className="text-h4 font-semibold text-secondary-foreground mb-0.5">CIRCIA 2026</h3>
                 <p className="text-body-sm text-secondary-foreground/70 leading-relaxed">
-                  Federal mandate for critical infrastructure. Report covered cyber incidents within 72 hours. Ransomware
-                  payments within 24 hours. Includes supply chain and third-party breaches. Effective 2026.
+                  Federal mandate. 72 hours for incidents. 24 hours for ransom payments. No exceptions.
                 </p>
               </div>
             </CardContent>
@@ -67,9 +60,9 @@ export function MandateSection() {
                 <AlertCircle className="w-3 h-3 text-bio-cyan" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-h4 font-semibold text-secondary-foreground mb-0.5">Ransomware 2025</h3>
+                <h3 className="text-h4 font-semibold text-secondary-foreground mb-0.5">The Paradox</h3>
                 <p className="text-body-sm text-secondary-foreground/70 leading-relaxed">
-                  The Paradox: Incidents up 36%, but payouts down 91%. <strong className="font-medium">Encryption dropped to 34%</strong> as attackers shifted to extortion.
+                  2025: Incidents up 36%. Payouts down 91%. The industry learned to recover. Now you must learn to report.
                 </p>
               </div>
             </CardContent>
@@ -79,16 +72,8 @@ export function MandateSection() {
         {/* Simplified Priority Text */}
         <div className="mt-12 max-w-3xl">
           <p className="text-body text-secondary-foreground/80 leading-relaxed">
-            <strong className="text-secondary-foreground font-semibold">
-              Achieving continuous compliance in this hostile landscape demands rigorous, evidence-based governance that
-              stands up to regulatory scrutiny.
-            </strong>{" "}
-            Cortex transforms your compliance posture by automating the{" "}
-            <strong className="text-secondary-foreground font-medium">6-year audit-ready retention</strong> and{" "}
-            <strong className="text-secondary-foreground font-medium">precision reporting workflows</strong> required by state and
-            federal law. By ensuring every 72-hour filing is accurate, legally reviewed, and defensible, we allow you to
-            demonstrate Board-level due diligence—protecting not just your network, but your hospital&apos;s operating
-            license.
+            Manual tracking of security incidents is prone to human error and missed deadlines. Listrum automates incident detection and reporting timelines, maintaining complete audit trails with 6-year retention using Merkle-tree data structures for cryptographic integrity verification.<br /><br />
+            Regulatory compliance requires documented evidence, not retroactive explanations. The system maintains tamper-evident logs of all security events and compliance actions.
           </p>
         </div>
       </div>

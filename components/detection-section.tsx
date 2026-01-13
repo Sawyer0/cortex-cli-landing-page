@@ -8,45 +8,45 @@ import { SectionDivider } from "@/components/section-divider"
 const detectionTypes = [
   {
     icon: Lock,
-    name: "Ransomware",
-    description: "Stops hard-to-detect malware aimed at locking your critical patient files.",
-    detail: "Blocks encryption attempts before data is lost",
+    name: "Encryption Pathogen",
+    description: "File-locking malware attempting to encrypt patient data.",
+    detail: "Isolated before replication",
   },
   {
     icon: Key,
-    name: "Brute Force",
-    description: "Detects unauthorized attempts to guess passwords and access hospital systems.",
-    detail: "Prevents hackers from breaking into your accounts",
+    name: "Credential Hemorrhage",
+    description: "Brute-force attempts to guess access credentials.",
+    detail: "Arterial bleed stopped at source",
   },
   {
     icon: Upload,
     name: "Data Exfiltration",
-    description: "Watches for sensitive patient records being secretly sent out of your network.",
-    detail: "Stops patient data theft in real-time",
+    description: "Sensitive records moving toward external destinations.",
+    detail: "Containment protocol engaged",
   },
   {
     icon: ArrowLeftRight,
-    name: "Lateral Movement",
-    description: "Identifies attackers trying to jump from one device to another within your hospital.",
-    detail: "Confines threats to a single device",
+    name: "Lateral Spread",
+    description: "Infection attempting to move between hosts.",
+    detail: "Quarantine boundaries enforced",
   },
   {
     icon: Radio,
-    name: "Command & Control",
-    description: "Blocks silent communication between infected devices and external hackers.",
-    detail: "Cuts off the attacker's line of communication",
+    name: "C2 Beacon",
+    description: "Outbound communication to command infrastructure.",
+    detail: "Signal terminated",
   },
   {
     icon: Search,
-    name: "Reconnaissance",
-    description: "Spots attackers quietly scanning your network to find weak points.",
-    detail: "Catches hackers before they launch an attack",
+    name: "Network Probing",
+    description: "Reconnaissance activity mapping internal topology.",
+    detail: "Scan detected and logged",
   },
   {
     icon: Clock,
-    name: "Slow-Roll Attacks",
-    description: "Uncovers stealthy threats that move slowly to avoid triggering alarms.",
-    detail: "Finds attacks designed to slip past standard defenses",
+    name: "Slow-Burn Infection",
+    description: "Low-velocity contamination designed to evade detection.",
+    detail: "Pattern recognized",
   },
 ]
 
@@ -66,11 +66,11 @@ export function DetectionSection() {
   const handleInternalScroll = () => {
     if (!scrollContainerRef.current) return
     const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current
-    
+
     // Calculate progress (0 to 1) based on internal scroll
     const maxScroll = scrollHeight - clientHeight
     const progress = Math.min(1, Math.max(0, scrollTop / maxScroll))
-    
+
     // Map progress to card index
     const index = Math.min(totalThreats - 1, Math.floor(progress * totalThreats))
     setActiveCard(index)
@@ -82,9 +82,9 @@ export function DetectionSection() {
         <div className="max-w-5xl mx-auto">
           {/* Detection Header */}
           <div className="mb-6">
-            <span className="text-micro font-mono text-secondary-foreground/60">Threat Detection</span>
+            <span className="text-micro font-mono text-secondary-foreground/60">Contamination Vectors</span>
             <h2 className="text-h2 mt-3 text-secondary-foreground">
-              Defense in Depth
+              Seven Pathways. One Sterile Field.
             </h2>
           </div>
 
@@ -130,23 +130,23 @@ export function DetectionSection() {
       <div className="w-full px-4 md:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            
+
             {/* Left Column: Interactive Card Stack with Internal Scroll */}
             <div className="space-y-12">
               <div>
                 <div className="mb-4">
                   <span className="text-micro font-mono text-secondary-foreground/60">
-                    Threat Detection
+                    Contamination Vectors
                   </span>
                   <h2 className="text-h2 mt-3 text-secondary-foreground">
-                    Defense in Depth
+                    Seven Pathways. One Sterile Field.
                   </h2>
                 </div>
 
                 {/* Card Stack Container */}
                 <div className="relative h-[320px]">
                   {/* Invisible Scroll Overlay */}
-                  <div 
+                  <div
                     ref={scrollContainerRef}
                     onScroll={handleInternalScroll}
                     className="absolute inset-0 z-20 overflow-y-auto scrollbar-hide"
@@ -179,17 +179,17 @@ export function DetectionSection() {
                       >
                         <Card className="bg-secondary-foreground/5 border-secondary-foreground/10 h-full flex flex-col shadow-sm">
                           <CardContent className="p-4 flex flex-col h-full">
-                                                          <div className="flex items-center justify-between mb-4">
-                                                            <div className="flex items-center gap-3">
-                                                              <div className="p-2 bg-primary text-primary-foreground rounded-md">
-                                                                <type.icon className="w-5 h-5" />
-                                                              </div>
-                                                              <h3 className="text-h3 font-semibold text-secondary-foreground">{type.name}</h3>
-                                                            </div>
-                                                            <span className="text-micro font-mono text-secondary-foreground/60">
-                                                              {String(index + 1).padStart(2, "0")} / {String(totalThreats).padStart(2, "0")}
-                                                            </span>
-                                                          </div>                            <p className="text-body-sm text-secondary-foreground/80 leading-relaxed flex-grow flex items-center justify-center text-center">
+                            <div className="flex items-center justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className="p-2 bg-primary text-primary-foreground rounded-md">
+                                  <type.icon className="w-5 h-5" />
+                                </div>
+                                <h3 className="text-h3 font-semibold text-secondary-foreground">{type.name}</h3>
+                              </div>
+                              <span className="text-micro font-mono text-secondary-foreground/60">
+                                {String(index + 1).padStart(2, "0")} / {String(totalThreats).padStart(2, "0")}
+                              </span>
+                            </div>                            <p className="text-body-sm text-secondary-foreground/80 leading-relaxed flex-grow flex items-center justify-center text-center">
                               {type.description}
                             </p>
                             <div className="mt-3 pt-3 border-t border-secondary-foreground/10">
@@ -211,7 +211,7 @@ export function DetectionSection() {
                     )
                   })}
                 </div>
-                
+
                 <div className="mt-4 flex items-center justify-center gap-1.5 text-primary">
                   <span className="text-micro font-mono font-medium tracking-wide">Scroll over cards to explore</span>
                   <div className="w-3 h-4 border border-primary/50 rounded-full flex items-start justify-center p-0.5">
@@ -226,35 +226,29 @@ export function DetectionSection() {
               <div className="space-y-6">
                 <div>
                   <span className="text-micro font-mono text-secondary-foreground/60">
-                    Defense in Depth
+                    Methodology
                   </span>
                   <h2 className="text-h2 mt-3 text-secondary-foreground">
-                    Deterministic. Agentic. Edge-First.
+                    Deterministic. Verifiable. Immutable.
                   </h2>
                 </div>
 
                 <p className="text-body text-secondary-foreground/80">
-                  Cortex deploys{" "}
+                  This is not a probabilistic model.
+                  There is no &quot;confidence score.&quot;
+                  There are no hallucinations.<br /><br />
+                  Listrum runs{" "}
                   <strong className="text-secondary-foreground font-medium">
-                    deterministic, agentic protection at the edge
-                  </strong>
-                  —directly on your existing Cisco infrastructure. No cloud round-trips, no guessing, no hallucinations. We intercept{" "}
-                  <strong className="text-secondary-foreground font-medium">
-                    7 distinct attack vectors
-                  </strong>{" "}
-                  in real-time, catching threats at every layer of the kill chain before they reach your core systems.
+                    formally verified state machines
+                  </strong>.
+                  Each transition is proven correct at compile time.
+                  The logic is auditable. The behavior is predictable.
                 </p>
 
                 <p className="text-body text-secondary-foreground/80">
-                  This isn&apos;t a static checklist or a probabilistic model hoping to flag bad behavior. The{" "}
-                  <strong className="text-secondary-foreground font-medium">
-                    Defense in Depth
-                  </strong>{" "}
-                  stack runs{" "}
-                  <strong className="text-secondary-foreground font-medium">
-                    formally verified logic
-                  </strong>{" "}
-                  that guarantees detection.
+                  When we say &quot;detected,&quot; we mean detected.<br />
+                  Not &quot;probably detected.&quot; Not &quot;likely detected.&quot;<br />
+                  <strong className="text-secondary-foreground font-medium">Detected.</strong>
                 </p>
               </div>
             </div>

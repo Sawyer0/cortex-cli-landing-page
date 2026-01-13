@@ -22,20 +22,28 @@ export default function Home() {
       <NetflowBackground className="fixed inset-0 opacity-60 pointer-events-none z-0" />
       <header className="sticky top-0 z-50 bg-secondary/80 backdrop-blur supports-[backdrop-filter]:bg-secondary/60 border-b border-white/5">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 h-14 sm:h-16 flex items-center justify-between">
-          <span className="font-mono text-base sm:text-lg font-semibold tracking-tight text-secondary-foreground">
-            CORTEX-CLI
-          </span>
+          <a href="/" className="flex items-center gap-3">
+            {/* Periodic Table Element Logo */}
+            <div className="relative w-10 h-12 bg-secondary-foreground/10 border border-secondary-foreground/20 flex flex-col items-center justify-center">
+              <span className="absolute top-0.5 left-1 text-[7px] font-medium text-carbon leading-none">443</span>
+              <span className="text-xl font-bold text-primary leading-none mt-1">Ls</span>
+              <span className="text-[6px] font-medium text-carbon leading-none mt-0.5">Listrum</span>
+            </div>
+            <span className="font-mono text-base sm:text-lg font-semibold tracking-tight text-secondary-foreground hidden sm:inline">
+              LISTRUM
+            </span>
+          </a>
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center gap-6">
             <a href="#mandate" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
-              Compliance
+              Sterility
             </a>
             <a href="#detection" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
-              Detection
+              Compliance
             </a>
             <a href="#security" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
-              Security
+              Verification
             </a>
             <a href="#contact" className="text-sm font-medium text-secondary-foreground">
               Contact
@@ -61,21 +69,21 @@ export default function Home() {
                 className="py-3 px-4 text-base text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Compliance
+                Sterility
               </a>
               <a
                 href="#detection"
                 className="py-3 px-4 text-base text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Detection
+                Compliance
               </a>
               <a
                 href="#security"
                 className="py-3 px-4 text-base text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Security
+                Verification
               </a>
               <a
                 href="#contact"

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ShieldCheck, Terminal, ChevronRight, CheckCircle2 } from "lucide-react"
+import Link from "next/link"
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -10,8 +11,8 @@ export function HeroSection() {
   const [terminalLines, setTerminalLines] = useState<string[]>([])
   const [isScanning, setIsScanning] = useState(false)
   const [scanTarget, setScanTarget] = useState("VLAN 40 - Radiology")
-  
-  const fullText = "cortex watch --active --verbose"
+
+  const fullText = "listrum verify"
 
   useEffect(() => {
     setIsVisible(true)
@@ -37,19 +38,20 @@ export function HeroSection() {
 
   const startInitialization = async () => {
     const lines = [
-      "Initializing edge defense protocols...",
-      "• [OK] Connected to 142 Cisco switches",
-      "• [OK] Policy Sync: NYSDOH-405.46",
-      "• [OK] Real-time heuristics active",
-      "------------------------------------------",
-      "Monitoring network traffic flow..."
+      "[Ls] LISTRUM PROTOCOL v2.0",
+      "--------------------------",
+      "> ISOLATION ZONE.... [STERILE]",
+      "> FOREIGN AGENTS.... [NONE]",
+      "> CONTAMINATION..... [0.00%]",
+      "",
+      "[OK] Sterile field verified."
     ]
 
     for (let i = 0; i < lines.length; i++) {
       await new Promise(resolve => setTimeout(resolve, 400 + Math.random() * 400))
       setTerminalLines(prev => [...prev, lines[i]])
     }
-    
+
     setIsScanning(true)
   }
 
@@ -70,10 +72,10 @@ export function HeroSection() {
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-            
+
             {/* Left Column */}
             <div className={`space-y-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}>
-              
+
               {/* Top Tags (Replacing Badge) */}
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 <div className="flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest text-secondary-foreground/60 uppercase">
@@ -86,33 +88,33 @@ export function HeroSection() {
                 </div>
                 <div className="flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest text-secondary-foreground/60 uppercase">
                   <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                  <span>Edge Native</span>
+                  <span>Edge-Deployed</span>
                 </div>
               </div>
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-secondary-foreground leading-[1.1]">
-                Autonomous Defense. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">
-                  Clinical Precision.
-                </span>
+                Network Sterility Through Formal Verification
               </h1>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-secondary-foreground/80 leading-[1.2] mt-2">
+                Ransomware spreads like an infection. <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">Listrum prevents contamination at the network edge.</span>
+              </h2>
 
               {/* Subheadline */}
               <p className="text-lg text-secondary-foreground/80 leading-relaxed max-w-xl">
-                Transform your existing infrastructure into a resilient security fabric. 
-                Cortex CLI intercepts threats at the edge and automates your regulatory reporting—
-                so you can focus on patient care, not compliance audits.
+                Listrum deploys on your existing Cisco infrastructure using formally verified state machines. All processing happens on-premise with automated compliance reporting for NYSDOH and CIRCIA requirements.
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Button size="lg" className="h-12 px-8 text-sm font-bold tracking-wider uppercase bg-primary hover:bg-primary/90 text-white border-none shadow-xl shadow-primary/20">
-                  Deploy Cortex
+                  Deploy Ls-443
                   <ChevronRight className="ml-2 w-4 h-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="h-12 px-8 text-sm font-bold tracking-wider uppercase border-white/20 bg-white/5 hover:bg-white/10 text-white">
-                  Read the Manifesto
+                <Button size="lg" variant="outline" asChild className="h-12 px-8 text-sm font-bold tracking-wider uppercase border-white/20 bg-white/5 hover:bg-white/10 text-white">
+                  <Link href="/about">
+                    Read the Manifesto
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -120,7 +122,7 @@ export function HeroSection() {
             {/* Right Column: Terminal Visualization */}
             <div className={`relative transition-all duration-1000 delay-300 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
               <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-              
+
               {/* Terminal Window */}
               <div className="relative rounded-xl overflow-hidden bg-[#0f172a] border border-white/10 shadow-2xl shadow-black/50">
                 {/* Terminal Header */}
@@ -132,7 +134,7 @@ export function HeroSection() {
                   </div>
                   <div className="text-[10px] font-mono text-slate-400 flex items-center gap-2">
                     <Terminal className="w-3 h-3" />
-                    cortex-cli — admin@hospital-net
+                    listrum :: sterile-field-001
                   </div>
                   <div className="w-12" />
                 </div>
@@ -150,20 +152,20 @@ export function HeroSection() {
                         {line}
                       </div>
                     ))}
-                    
+
                     {isScanning && (
                       <div className="mt-4 space-y-2">
                         <div className="flex items-center gap-2">
                           <span className="text-primary animate-pulse">●</span>
-                          <span className="text-slate-300 italic">Scanning {scanTarget}...</span>
+                          <span className="text-slate-300 italic">Monitoring {scanTarget}...</span>
                         </div>
                         <div className="grid grid-cols-[80px_1fr] gap-2 mt-2 border-l-2 border-primary/30 pl-3 py-1">
                           <span className="text-slate-500">PACKET:</span>
-                          <span className="text-slate-300 truncate">TCP 192.168.{Math.floor(Math.random()*255)}.{Math.floor(Math.random()*255)} -&gt; OUT</span>
+                          <span className="text-slate-300 truncate">TCP 192.168.{Math.floor(Math.random() * 255)}.{Math.floor(Math.random() * 255)} -&gt; OUT</span>
                           <span className="text-slate-500">STATUS:</span>
                           <span className="text-emerald-400 flex items-center gap-1">
                             <ShieldCheck className="w-3 h-3" />
-                            Verified Safe
+                            ● STERILE
                           </span>
                         </div>
                       </div>
