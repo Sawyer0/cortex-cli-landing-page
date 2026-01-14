@@ -4,8 +4,10 @@ import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ShieldCheck, Terminal, ChevronRight, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export function HeroSection() {
+  const router = useRouter()
   const [isVisible, setIsVisible] = useState(false)
   const [typedText, setTypedText] = useState("")
   const [terminalLines, setTerminalLines] = useState<string[]>([])
@@ -111,10 +113,13 @@ export function HeroSection() {
                   Deploy Ls-443
                   <ChevronRight className="ml-2 w-4 h-4" />
                 </Button>
-                <Button size="lg" variant="outline" asChild className="h-12 px-8 text-sm font-bold tracking-wider uppercase border-white/20 bg-white/5 hover:bg-white/10 text-white">
-                  <Link href="/about">
-                    Read the Manifesto
-                  </Link>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-12 px-8 text-sm font-bold tracking-wider uppercase border-white/20 bg-white/5 hover:bg-white/10 text-white"
+                  onClick={() => router.push('/about')}
+                >
+                  Read the Manifesto
                 </Button>
               </div>
             </div>
