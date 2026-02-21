@@ -1,124 +1,114 @@
 "use client"
 
-import { Router, ShieldCheck, FileText } from "lucide-react"
+import { motion } from "framer-motion"
+import { Search, UserCheck, Archive, ArrowRight } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
+
+const steps = [
+  {
+    icon: Search,
+    title: "Detect",
+    time: "0.2s",
+    desc: "Threat identified at Layer 2 via deterministic pattern matching",
+    color: "#ef4444",
+    borderGlow: "shadow-[0_0_30px_-8px_rgba(239,68,68,0.3)]",
+  },
+  {
+    icon: UserCheck,
+    title: "Review",
+    time: "5 min",
+    desc: "CISO notified with full forensic context for immediate approval",
+    color: "#f59e0b",
+    borderGlow: "shadow-[0_0_30px_-8px_rgba(245,158,11,0.3)]",
+  },
+  {
+    icon: Archive,
+    title: "Archive",
+    time: "6 years",
+    desc: "Evidence sealed with Merkle tree integrity for audit readiness",
+    color: "#10b981",
+    borderGlow: "shadow-[0_0_30px_-8px_rgba(16,185,129,0.3)]",
+  },
+]
 
 export function WorkflowSection() {
   return (
-    <AnimatedSection className="px-4 sm:px-6 md:px-8 lg:px-12 pt-0 pb-20 md:pb-32 text-secondary-foreground relative z-10">
+    <AnimatedSection className="px-4 sm:px-6 md:px-8 lg:px-12 pt-0 pb-20 md:pb-28 text-secondary-foreground relative z-10">
       <div className="max-w-5xl mx-auto">
-        <div className="mb-10 md:mb-12 text-center">
-          <span className="text-micro font-mono text-secondary-foreground/60">Protocol</span>
-          <h2 className="text-h2 mt-3 text-secondary-foreground">The Compliance Lifecycle</h2>
-          <p className="mt-4 text-body text-secondary-foreground/80 max-w-2xl mx-auto mb-4">
-            Incident → Triage → Approval → Filing → Retention.<br />Automated. Auditable. Immutable.
+        {/* Header */}
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-4">
+            <Archive className="w-3 h-3" />
+            <span>Workflow</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground tracking-tight">
+            Three Steps to Compliance
+          </h2>
+          <p className="text-secondary-foreground/60 mt-3 max-w-lg mx-auto text-sm md:text-base">
+            Automated workflow. No spreadsheets. No missed deadlines.
           </p>
         </div>
 
-        {/* Step 1: Detect & Route */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
-          <div>
-            <h3 className="text-h3 text-secondary-foreground mb-2">01: Detection</h3>
-            <p className="text-body text-secondary-foreground/80">
-              Listrum monitors NetFlow telemetry at the edge.
-              When contamination is detected, the 72-hour clock starts.
-              <strong className="text-secondary-foreground font-medium"> Automatically.</strong><br /><br />
-              No human has to remember. No spreadsheet has to be updated. The system knows.
-            </p>
+        {/* Steps */}
+        <motion.div
+          className="relative grid grid-cols-1 md:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{ show: { transition: { staggerChildren: 0.12 } } }}
+        >
+          {/* Connection arrows (desktop) */}
+          <div className="hidden md:flex absolute top-1/2 left-[33%] right-[33%] -translate-y-1/2 justify-around z-0 pointer-events-none">
+            <ArrowRight className="w-6 h-6 text-secondary-foreground/15 -ml-3" />
+            <ArrowRight className="w-6 h-6 text-secondary-foreground/15 -mr-3" />
           </div>
-          <div className="w-full max-w-[280px] mx-auto bg-black/40 backdrop-blur-md rounded-lg border border-white/10 p-3 shadow-sm font-mono text-ui-xs leading-relaxed">
-            <div className="flex items-center gap-1.5 mb-2 border-b border-white/5 pb-1.5">
-              <div className="w-2 h-2 rounded-full bg-red-500/20 border border-red-500/50" />
-              <div className="w-2 h-2 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
-              <div className="w-2 h-2 rounded-full bg-green-500/20 border border-green-500/50" />
-              <span className="ml-2 text-secondary-foreground/40">detection_event.json</span>
-            </div>
-            <div className="text-white/30">{"{"}</div>
-            <div className="pl-3">
-              <span className="text-bio-cyan/90">&quot;event&quot;</span>: <span className="text-primary/90">&quot;CONTAMINATION_DETECTED&quot;</span>,
-            </div>
-            <div className="pl-3">
-              <span className="text-bio-cyan/90">&quot;class&quot;</span>: <span className="text-primary/90">&quot;ENCRYPTION_PATHOGEN&quot;</span>,
-            </div>
-            <div className="pl-3">
-              <span className="text-bio-cyan/90">&quot;vlan&quot;</span>: <span className="text-primary/90">&quot;ICU_DEVICES&quot;</span>,
-            </div>
-            <div className="pl-3">
-              <span className="text-bio-cyan/90">&quot;clock_started&quot;</span>: <span className="text-primary/90">&quot;2025-01-12T14:22:01Z&quot;</span>
-            </div>
-            <div className="text-white/30">{"}"}</div>
-          </div>
-        </div>
 
-        {/* Step 2: Human Approval */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
-          <div>
-            <h3 className="text-h3 text-secondary-foreground mb-2">02: Human Approval</h3>
-            <p className="text-body text-secondary-foreground/80">
-              We never auto-submit to regulators.<br /><br />
-              Every incident routes to your CISO dashboard.
-              Your team reviews the evidence. Your team assesses materiality.
-              <strong className="text-secondary-foreground font-medium"> Your team approves or dismisses.</strong><br /><br />
-              Legal signing authority never leaves your organization.
-            </p>
-          </div>
-          <div className="w-full max-w-[280px] mx-auto bg-black/40 backdrop-blur-md rounded-lg border border-white/10 p-3 shadow-sm font-mono text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 mb-2 border-b border-white/5 pb-1.5">
-              <div className="w-2 h-2 rounded-full bg-white/10" />
-              <span className="ml-2 text-secondary-foreground/40">terminal</span>
-            </div>
-            <div className="text-secondary-foreground/60 mb-1">$ listrum status --pending</div>
-            <div className="text-emerald-400/90 font-bold">[!] INC-2025-0412</div>
-            <div className="pl-3 text-secondary-foreground/60">
-              Class:     <span className="text-primary/90">ENCRYPTION_PATHOGEN</span>
-            </div>
-            <div className="pl-3 text-secondary-foreground/60">
-              VLAN:      <span className="text-white/90">ICU_DEVICES</span>
-            </div>
-            <div className="pl-3 text-secondary-foreground/60">
-              Remaining: <span className="text-white/90">68h 14m</span>
-            </div>
-            <div className="pl-3 text-secondary-foreground/60">
-              Status:    <span className="text-primary/90">AWAITING_CISO_APPROVAL</span>
-            </div>
-            <div className="mt-1 text-primary animate-pulse">_</div>
-          </div>
-        </div>
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.title}
+              className={`relative glass-card rounded-xl p-6 md:p-8 text-center group z-10 ${step.borderGlow}`}
+              variants={{
+                hidden: { opacity: 0, y: 20, scale: 0.97 },
+                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: "easeOut" } },
+              }}
+            >
+              {/* Step number */}
+              <div
+                className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-mono font-bold text-white"
+                style={{ backgroundColor: step.color }}
+              >
+                {index + 1}
+              </div>
 
-        {/* Step 3: Approve & File */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-h3 text-secondary-foreground mb-2">03: Immutable Record</h3>
-            <p className="text-body text-secondary-foreground/80">
-              Every action is logged. Detection. Triage. Dismissal. Approval. Submission.<br /><br />
-              Stored in a{" "}
-              <strong className="text-secondary-foreground font-medium">Merkle tree</strong>.
-              Retained for 6 years. Cryptographically tamper-evident.<br /><br />
-              When auditors ask &quot;prove it,&quot; you can.
-            </p>
-          </div>
-          <div className="w-full max-w-[280px] mx-auto bg-black/40 backdrop-blur-md rounded-lg border border-white/10 p-3 shadow-sm font-mono text-[9px] leading-relaxed">
-            <div className="flex items-center gap-1.5 mb-2 border-b border-white/5 pb-1.5">
-              <ShieldCheck className="w-3 h-3 text-emerald-500/80" />
-              <span className="ml-1 text-secondary-foreground/40">audit_log.sig</span>
-            </div>
-            <div className="text-bio-cyan/90 mb-1">[AUDIT_LOG] Signed & Sealed</div>
-            <div className="grid grid-cols-[45px_1fr] gap-x-2">
-              <span className="text-secondary-foreground/60">Hash:</span>
-              <span className="text-primary/90 truncate">0x8f2a...9d4b</span>
+              {/* Icon */}
+              <div
+                className="w-16 h-16 mx-auto mb-5 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                style={{ backgroundColor: `${step.color}12`, border: `1px solid ${step.color}25` }}
+              >
+                <step.icon className="w-7 h-7" style={{ color: step.color }} />
+              </div>
 
-              <span className="text-secondary-foreground/60">Time:</span>
-              <span className="text-white/90">2025-01-12T14:22:01Z</span>
+              {/* Title */}
+              <h3 className="text-xl font-bold text-secondary-foreground mb-1">
+                {step.title}
+              </h3>
 
-              <span className="text-secondary-foreground/60">Signer:</span>
-              <span className="text-emerald-400/90 truncate">compliance@hospital.org</span>
-            </div>
-            <div className="mt-1 text-ui-xs text-white/10 break-all leading-tight">
-              -----BEGIN CRYPTOGRAPHIC PROOF-----
-            </div>
-          </div>
-        </div>
+              {/* Time */}
+              <div
+                className="text-3xl font-bold font-mono mb-3"
+                style={{ color: step.color }}
+              >
+                {step.time}
+              </div>
+
+              {/* Description */}
+              <p className="text-xs text-secondary-foreground/50 leading-relaxed">
+                {step.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </AnimatedSection >
+    </AnimatedSection>
   )
 }

@@ -1,184 +1,116 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ShieldCheck, Terminal, ChevronRight, CheckCircle2 } from "lucide-react"
-import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
+import { ChevronRight, FileText } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { NetworkVisualization } from "@/components/network-visualization"
 
 export function HeroSection() {
   const router = useRouter()
-  const [isVisible, setIsVisible] = useState(false)
-  const [typedText, setTypedText] = useState("")
-  const [terminalLines, setTerminalLines] = useState<string[]>([])
-  const [isScanning, setIsScanning] = useState(false)
-  const [scanTarget, setScanTarget] = useState("VLAN 40 - Radiology")
+  const [mounted, setMounted] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
 
-  const fullText = "listrum verify"
+  useEffect(() => { setMounted(true) }, [])
 
-  useEffect(() => {
-    setIsVisible(true)
-    let index = 0
-    let timer: NodeJS.Timeout
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
 
-    const startTyping = setTimeout(() => {
-      timer = setInterval(() => {
-        setTypedText(fullText.slice(0, index + 1))
-        index++
-        if (index > fullText.length) {
-          clearInterval(timer)
-          startInitialization()
-        }
-      }, 60)
-    }, 1200) // Delay to wait for hydration/fade-in
-
-    return () => {
-      clearTimeout(startTyping)
-      clearInterval(timer)
-    }
-  }, [])
-
-  const startInitialization = async () => {
-    const lines = [
-      "[Ls] LISTRUM PROTOCOL v2.0",
-      "--------------------------",
-      "> ISOLATION ZONE.... [STERILE]",
-      "> FOREIGN AGENTS.... [NONE]",
-      "> CONTAMINATION..... [0.00%]",
-      "",
-      "[OK] Sterile field verified."
-    ]
-
-    for (let i = 0; i < lines.length; i++) {
-      await new Promise(resolve => setTimeout(resolve, 400 + Math.random() * 400))
-      setTerminalLines(prev => [...prev, lines[i]])
-    }
-
-    setIsScanning(true)
-  }
-
-  // Live scanning effect
-  useEffect(() => {
-    if (!isScanning) return
-    const targets = ["VLAN 40 - Radiology", "VLAN 12 - ICU", "VLAN 22 - Pharmacy", "VLAN 04 - Administration"]
-    let i = 0
-    const interval = setInterval(() => {
-      setScanTarget(targets[i % targets.length])
-      i++
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [isScanning])
+  // Subtle parallax: viz floats up slightly on scroll
+  const vizY = useTransform(scrollYProgress, [0, 1], [0, 40])
 
   return (
-    <section className="relative overflow-hidden min-h-[90vh] flex items-center pt-20 pb-20 lg:pt-0 lg:pb-0">
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden min-h-[94vh] flex items-center py-16 lg:py-0"
+    >
+      {/* Faint top gradient */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-primary/[0.025] to-transparent pointer-events-none" />
+
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-8 items-center">
 
             {/* Left Column */}
-            <div className={`space-y-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}>
-
-              {/* Top Tags (Replacing Badge) */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                <div className="flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest text-secondary-foreground/60 uppercase">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                  <span>Cisco Verified</span>
-                </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest text-secondary-foreground/60 uppercase">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                  <span>HIPAA Ready</span>
-                </div>
-                <div className="flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest text-secondary-foreground/60 uppercase">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-primary" />
-                  <span>Edge-Deployed</span>
-                </div>
-              </div>
+            <motion.div
+              className="space-y-8"
+              initial={{ opacity: 0, y: 28 }}
+              animate={mounted ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Compliance tag — replaces trust badge row */}
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={mounted ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.25, duration: 0.45 }}
+              >
+                <Badge
+                  variant="outline"
+                  className="font-mono text-[10px] tracking-widest uppercase text-secondary-foreground/50 border-white/10 bg-white/[0.03] px-3 py-1"
+                >
+                  NYSDOH 405.46 · CIRCIA 2026
+                </Badge>
+              </motion.div>
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-secondary-foreground leading-[1.1]">
-                Network Sterility Through Formal Verification
-              </h1>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-secondary-foreground/80 leading-[1.2] mt-2">
-                Ransomware spreads like an infection. <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-400">Listrum prevents contamination at the network edge.</span>
-              </h2>
+              <div className="space-y-2">
+                <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] xl:text-[3.75rem] font-bold tracking-tight text-secondary-foreground leading-[1.07]">
+                  Your network is dark.
+                  <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-400 to-amber-400">
+                    By the time you know,
+                  </span>
+                  <br />
+                  it&apos;s already done.
+                </h1>
+              </div>
 
-              {/* Subheadline */}
-              <p className="text-lg text-secondary-foreground/80 leading-relaxed max-w-xl">
-                Listrum deploys on your existing Cisco infrastructure using formally verified state machines. All processing happens on-premise with automated compliance reporting for NYSDOH and CIRCIA requirements.
+              {/* Single-line sub */}
+              <p className="text-base sm:text-lg text-secondary-foreground/60 leading-relaxed max-w-lg">
+                Listrum deploys at the network edge. No new hardware. No cloud. Ransomware detection in nanoseconds — before encryption starts.
               </p>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Button size="lg" className="h-12 px-8 text-sm font-bold tracking-wider uppercase bg-primary hover:bg-primary/90 text-white border-none shadow-xl shadow-primary/20">
-                  Deploy Ls-443
-                  <ChevronRight className="ml-2 w-4 h-4" />
+              {/* CTAs */}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-3 pt-1"
+                initial={{ opacity: 0, y: 10 }}
+                animate={mounted ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                <Button
+                  size="lg"
+                  className="h-12 px-8 text-sm font-bold tracking-wider uppercase bg-primary hover:bg-primary/90 text-white border-none shadow-xl shadow-primary/20 transition-all hover:shadow-primary/30"
+                >
+                  Get a Free Assessment
+                  <ChevronRight className="ml-1 w-4 h-4" />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="h-12 px-8 text-sm font-bold tracking-wider uppercase border-white/20 bg-white/5 hover:bg-white/10 text-white"
-                  onClick={() => router.push('/about')}
+                  className="h-12 px-8 text-sm font-bold tracking-wider uppercase border-white/15 bg-white/[0.03] hover:bg-white/[0.07] text-secondary-foreground transition-all hover:border-white/25"
+                  onClick={() => router.push("/about")}
                 >
-                  Read the Manifesto
+                  <FileText className="w-4 h-4 mr-2" />
+                  Read the Whitepaper
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* Right Column: Terminal Visualization */}
-            <div className={`relative transition-all duration-1000 delay-300 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-              <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-
-              {/* Terminal Window */}
-              <div className="relative rounded-xl overflow-hidden bg-[#0f172a] border border-white/10 shadow-2xl shadow-black/50">
-                {/* Terminal Header */}
-                <div className="flex items-center justify-between px-4 py-3 bg-[#1e293b] border-b border-white/5">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                    <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                  </div>
-                  <div className="text-[10px] font-mono text-slate-400 flex items-center gap-2">
-                    <Terminal className="w-3 h-3" />
-                    listrum :: sterile-field-001
-                  </div>
-                  <div className="w-12" />
-                </div>
-
-                {/* Terminal Body */}
-                <div className="p-6 font-mono text-xs sm:text-sm leading-relaxed min-h-[360px] text-slate-300">
-                  <div className="mb-4">
-                    <span className="text-green-400">➜</span> <span className="text-blue-400">~</span> {typedText}
-                    {typedText.length < fullText.length && <span className="animate-pulse bg-slate-400 w-2 h-4 inline-block align-middle ml-1" />}
-                  </div>
-
-                  <div className="space-y-1">
-                    {terminalLines.map((line, i) => (
-                      <div key={i} className={`animate-in fade-in slide-in-from-left-2 duration-300 ${line.startsWith('• [OK]') ? 'text-green-400' : 'text-slate-400'}`}>
-                        {line}
-                      </div>
-                    ))}
-
-                    {isScanning && (
-                      <div className="mt-4 space-y-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-primary animate-pulse">●</span>
-                          <span className="text-slate-300 italic">Monitoring {scanTarget}...</span>
-                        </div>
-                        <div className="grid grid-cols-[80px_1fr] gap-2 mt-2 border-l-2 border-primary/30 pl-3 py-1">
-                          <span className="text-slate-500">PACKET:</span>
-                          <span className="text-slate-300 truncate">TCP 192.168.{Math.floor(Math.random() * 255)}.{Math.floor(Math.random() * 255)} -&gt; OUT</span>
-                          <span className="text-slate-500">STATUS:</span>
-                          <span className="text-emerald-400 flex items-center gap-1">
-                            <ShieldCheck className="w-3 h-3" />
-                            ● STERILE
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Right Column — Network Visualization with scroll parallax */}
+            <motion.div
+              className="relative"
+              style={{ y: vizY }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={mounted ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.2, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="absolute -top-16 -right-16 w-[320px] h-[320px] bg-primary/[0.035] rounded-full blur-[90px] pointer-events-none" />
+              <NetworkVisualization />
+            </motion.div>
 
           </div>
         </div>

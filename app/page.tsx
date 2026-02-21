@@ -1,29 +1,35 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { HeroSection } from "@/components/hero-section"
-import { MandateSection } from "@/components/mandate-section"
-import { DetectionSection } from "@/components/detection-section"
-import { WorkflowSection } from "@/components/workflow-section"
+import { ProblemSection } from "@/components/problem-section"
+import { SolutionSection } from "@/components/solution-section"
 import { SecuritySection } from "@/components/security-section"
 import { AudienceSection } from "@/components/audience-section"
-import { ProofSection } from "@/components/proof-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
-import { SectionDivider } from "@/components/section-divider"
 import { NetflowBackground } from "@/components/ui/netflow-background"
+import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+
+const NAV_LINKS = [
+  { href: "#detection", label: "Detection" },
+  { href: "#security", label: "Deployment" },
+  { href: "#contact", label: "Contact" },
+]
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <main className="min-h-screen relative">
-      <NetflowBackground className="fixed inset-0 opacity-60 pointer-events-none z-0" />
+        <NetflowBackground className="fixed inset-0 pointer-events-none z-0" />
+
       <header className="sticky top-0 z-50 bg-secondary/80 backdrop-blur supports-[backdrop-filter]:bg-secondary/60 border-b border-white/5">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 h-14 sm:h-16 flex items-center justify-between">
+          {/* Logo */}
           <a href="/" className="flex items-center gap-3">
-            {/* Periodic Table Element Logo */}
             <div className="relative w-10 h-12 bg-secondary-foreground/10 border border-secondary-foreground/20 flex flex-col items-center justify-center">
               <span className="absolute top-0.5 left-1 text-[7px] font-medium text-carbon leading-none">443</span>
               <span className="text-xl font-bold text-primary leading-none mt-1">Ls</span>
@@ -34,91 +40,69 @@ export default function Home() {
             </span>
           </a>
 
-          {/* Desktop navigation */}
+          {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#mandate" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
-              Sterility
-            </a>
-            <a href="#detection" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
-              Compliance
-            </a>
-            <a href="#security" className="text-sm text-secondary-foreground/60 hover:text-secondary-foreground transition-colors">
-              Verification
-            </a>
-            <a href="#contact" className="text-sm font-medium text-secondary-foreground">
-              Contact
-            </a>
+            {NAV_LINKS.slice(0, -1).map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-secondary-foreground/55 hover:text-secondary-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            <Button
+              size="sm"
+              variant="outline"
+              className="h-8 px-4 text-xs font-bold tracking-wider uppercase border-white/15 bg-white/[0.03] hover:bg-white/[0.08] text-secondary-foreground"
+              asChild
+            >
+              <a href="#contact">Contact</a>
+            </Button>
           </nav>
 
-          {/* Mobile menu button - 44px touch target */}
+          {/* Mobile menu button */}
           <button
             className="md:hidden p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-secondary-foreground"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
-        {/* Mobile menu overlay */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border shadow-lg">
-            <nav className="flex flex-col p-4 gap-1">
-              <a
-                href="#mandate"
-                className="py-3 px-4 text-base text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Sterility
-              </a>
-              <a
-                href="#detection"
-                className="py-3 px-4 text-base text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Compliance
-              </a>
-              <a
-                href="#security"
-                className="py-3 px-4 text-base text-muted-foreground hover:text-foreground hover:bg-muted transition-colors rounded"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Verification
-              </a>
-              <a
-                href="#contact"
-                className="py-3 px-4 text-base font-medium text-foreground hover:bg-muted transition-colors rounded"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </a>
-            </nav>
-          </div>
-        )}
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              className="md:hidden absolute top-full left-0 right-0 bg-secondary/95 backdrop-blur-md border-b border-white/[0.06]"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+            >
+              <nav className="flex flex-col p-4 gap-1">
+                {NAV_LINKS.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="py-3 px-4 text-base text-secondary-foreground/60 hover:text-secondary-foreground hover:bg-white/[0.04] transition-colors rounded"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
+
       <HeroSection />
-      <MandateSection />
-
-      <SectionDivider variant="slate-to-card" />
-
-      <DetectionSection />
-
-      <WorkflowSection />
-
-      <SectionDivider variant="slate-to-card" />
-
+      <ProblemSection />
+      <SolutionSection />
       <SecuritySection />
-
-      <SectionDivider variant="card-to-slate" />
-
       <AudienceSection />
-
-      <SectionDivider variant="slate-to-secondary" />
-
-      <ProofSection />
-
-      <SectionDivider variant="secondary-to-card" />
-
       <CTASection />
       <Footer />
     </main>

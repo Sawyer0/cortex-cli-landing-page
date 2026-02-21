@@ -2,7 +2,7 @@
 
 > **Proprietary & Confidential** — © 2026 Listrum. All rights reserved.
 
-This repository contains the marketing landing page for **Listrum** (formerly Cortex-CLI).
+This repository contains the marketing landing page for **Listrum**.
 
 **Listrum** is the chemical barrier for the modern network. We deploy at the edge to ensure the environment remains sterile.
 

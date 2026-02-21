@@ -1,0 +1,26 @@
+2026-02-20T20:38:44.186Z [console][warn] [Fast Refresh] done in 805ms
+2026-02-20T20:39:04.520Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:39:05.443Z [console][warn] [Fast Refresh] done in 922ms
+2026-02-20T20:39:27.705Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:39:28.825Z [console][warn] [Fast Refresh] done in 1120ms
+2026-02-20T20:39:51.087Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:39:51.854Z [console][warn] [Fast Refresh] done in 768ms
+2026-02-20T20:40:08.672Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:40:09.820Z [console][warn] [Fast Refresh] done in 1149ms
+2026-02-20T20:40:10.392Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:40:11.073Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:40:11.126Z [console][warn] [Fast Refresh] done in 52ms
+2026-02-20T20:40:11.663Z [console][warn] [Fast Refresh] done in 590ms
+2026-02-20T20:40:34.530Z [console][warn] [Fast Refresh] rebuilding
+2026-02-20T20:40:37.735Z [console][warn] [Fast Refresh] done in 3207ms
+2026-02-21T06:09:23.190Z [console][error] Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+2026-02-21T07:15:01.312Z [console][error] The resource http://localhost:3030/_next/static/css/app/layout.css?v=1771658037977 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+2026-02-21T07:15:07.280Z [console][error] [Fast Refresh] performing full reload because your application had an unrecoverable error
+2026-02-21T07:15:07.840Z [console][error] [Fast Refresh] performing full reload because your application had an unrecoverable error
+2026-02-21T07:15:10.849Z [console][error] The resource http://localhost:3030/_next/static/css/app/layout.css?v=1771658037977 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+2026-02-21T07:15:14.889Z [console][error] [Fast Refresh] performing full reload because your application had an unrecoverable error
+2026-02-21T07:15:16.439Z [console][error] [Fast Refresh] performing full reload because your application had an unrecoverable error
+2026-02-21T07:15:19.445Z [console][error] The resource http://localhost:3030/_next/static/css/app/layout.css?v=1771658037977 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+2026-02-21T07:15:27.853Z [console][error] [Fast Refresh] performing full reload because your application had an unrecoverable error
+2026-02-21T07:15:29.422Z [console][error] [Fast Refresh] performing full reload because your application had an unrecoverable error
+2026-02-21T07:15:32.434Z [console][error] The resource http://localhost:3030/_next/static/css/app/layout.css?v=1771658037977 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.

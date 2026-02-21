@@ -1,93 +1,104 @@
 "use client"
 
-import { CheckCircle, Shield, Cpu, Activity } from "lucide-react"
+import { motion } from "framer-motion"
+import { CheckCircle, Shield, FileCheck, Lock, Fingerprint } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
+
+const proofs = [
+  {
+    icon: CheckCircle,
+    label: "Deterministic",
+    value: "Zero",
+    suffix: "False Positives",
+    color: "#10b981",
+    desc: "Every detection is mathematically certain, not probabilistic",
+  },
+  {
+    icon: Shield,
+    label: "Verified",
+    value: "100%",
+    suffix: "Mathematically Proven",
+    color: "#3b82f6",
+    desc: "Formal verification guarantees correctness of every rule",
+  },
+  {
+    icon: FileCheck,
+    label: "Auditable",
+    value: "6 Years",
+    suffix: "Evidence Retention",
+    color: "#f59e0b",
+    desc: "Complete forensic chain of custody for every incident",
+  },
+  {
+    icon: Lock,
+    label: "Immutable",
+    value: "Merkle",
+    suffix: "Tree Integrity",
+    color: "#8b5cf6",
+    desc: "Cryptographic proof that evidence has never been altered",
+  },
+]
 
 export function ProofSection() {
   return (
     <AnimatedSection className="px-4 sm:px-6 md:px-8 lg:px-12 section-padding text-secondary-foreground relative overflow-hidden z-10">
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <div className="mb-10 md:mb-12">
-          <span className="text-micro font-mono text-secondary-foreground/60">Verification</span>
-          <h2 className="text-h2 mt-1 text-secondary-foreground">
-            Formally Verified. Mathematically Proven.
-          </h2>
-        </div>
-
-        <p className="text-body text-secondary-foreground/80 leading-relaxed mb-12 max-w-3xl">
-          In surgery, &quot;probably sterile&quot; means infected. In compliance, &quot;probably detected&quot; means liable.<br /><br />
-          Listrum uses <strong className="text-secondary-foreground font-medium">Verus</strong>, a formal verification system, to prove our state machine logic correct at compile time. Not at runtime. <strong className="text-secondary-foreground font-medium">At compile time.</strong><br /><br />
-          This is not AI. There is no training data. There are no edge cases. The proof is the product.
-        </p>
-
-
-
-        <div className="border border-secondary-foreground/20 bg-secondary-foreground/5">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Left Column: Specifications */}
-            <div className="p-3 border-b lg:border-b-0 lg:border-r border-secondary-foreground/20">
-
-              <div className="space-y-2">
-                <div className="group">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-
-                    <span className="text-xs font-semibold text-primary">
-                      Deterministic
-                    </span>
-                  </div>
-                  <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Same input → same output. No temperature. No randomness. No probability.
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-xs font-semibold text-primary">
-                      Proven
-                    </span>
-                  </div>
-                  <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Logic verified with mathematical proof. Every state transition validated at compile time.
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-xs font-semibold text-primary">Auditable</span>
-                  </div>
-                  <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    Every decision traces to source code. Every log entry traces to telemetry. Full chain of custody.
-                  </p>
-                </div>
-                <div className="group">
-                  <div className="flex items-center gap-1.5 mb-0.5">
-                    <span className="text-xs font-semibold text-primary">Immutable</span>
-                  </div>
-                  <p className="text-body-sm text-secondary-foreground/60 pl-4 leading-relaxed">
-                    6 years of Merkle-tree storage. Tamper-evident by design. Cryptographic proof of integrity.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-3 bg-black/30">
-              <h3 className="font-mono text-ui-xs text-secondary-foreground/60 tracking-widest uppercase mb-2 flex items-center gap-1.5">
-                <Activity className="w-2.5 h-2.5 text-green-400" />
-                Compliance_Report
-              </h3>
-              <div className="bg-black/50 border border-secondary-foreground/10 p-2 font-mono text-ui-xs overflow-x-auto max-h-[180px]">
-                <pre className="text-green-400/90 whitespace-pre leading-relaxed">
-                  {`{
-  "event_type": "INCIDENT_DETECTED",
-  "threat_class": "RANSOMWARE_SYMMETRIC",
-  "vlan_name": "Infusion Pumps",
-  "criticality": "CRITICAL",
-  "hours_remaining": 72,
-  "verification": "VERUS_FSM_STATE_VALID"
-}`}
-                </pre>
-              </div>
-            </div>
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-4">
+            <Fingerprint className="w-3 h-3" />
+            <span>Proof</span>
           </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground tracking-tight">
+            When We Say Detected, We Mean It
+          </h2>
+          <p className="text-secondary-foreground/60 mt-3 max-w-lg mx-auto text-sm md:text-base">
+            No AI. No guessing. No &ldquo;confidence scores.&rdquo; Just mathematical proof.
+          </p>
         </div>
+
+        {/* Proof Cards */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+        >
+          {proofs.map((proof) => (
+            <motion.div
+              key={proof.label}
+              className="glass-card rounded-xl p-5 md:p-6 text-center group"
+              variants={{
+                hidden: { opacity: 0, y: 16, scale: 0.97 },
+                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4 } },
+              }}
+            >
+              <div
+                className="w-12 h-12 mx-auto mb-4 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                style={{ backgroundColor: `${proof.color}12`, border: `1px solid ${proof.color}25` }}
+              >
+                <proof.icon className="w-6 h-6" style={{ color: proof.color }} />
+              </div>
+
+              <div className="text-[10px] font-mono text-secondary-foreground/40 uppercase tracking-wider mb-2">
+                {proof.label}
+              </div>
+
+              <div className="text-3xl font-bold font-mono text-secondary-foreground mb-1">
+                {proof.value}
+              </div>
+
+              <div className="text-xs font-medium mb-3" style={{ color: proof.color }}>
+                {proof.suffix}
+              </div>
+
+              <p className="text-[11px] text-secondary-foreground/40 leading-relaxed">
+                {proof.desc}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </AnimatedSection>
   )

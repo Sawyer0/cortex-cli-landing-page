@@ -1,95 +1,266 @@
 "use client"
 
+import { useState, useRef } from "react"
+import { motion, useInView, AnimatePresence } from "framer-motion"
+import { Clock, FileText, Server, ShieldCheck, ArrowRight } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
-import { Clock, FileText, Server, ShieldCheck } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-const audiences = [
+const AUDIENCES = [
   {
-    id: "01",
+    icon: Clock,
     role: "Hospital CISOs",
-    benefit:
-      "Automate the 72-hour clock. Stop tracking deadlines in spreadsheets. Start proving compliance with evidence.",
+    roleShort: "CISO",
+    headline: "72-hour mandate. Automated.",
+    detail:
+      "Incident captured, reviewed, and documented before the compliance clock becomes a liability. Full forensic chain-of-custody generated automatically.",
     highlight: "72-hour automation",
+    metric: "72hr",
+    metricLabel: "Average close time",
+    color: "#ef4444",
   },
   {
-    id: "02",
+    icon: FileText,
     role: "Compliance Officers",
-    benefit: "NYSDOH 405.46. CIRCIA 2026. Pre-filled reports. Audit-ready logs. 6-year retention. Merkle integrity.",
+    roleShort: "Compliance",
+    headline: "NYSDOH + CIRCIA. Pre-filled.",
+    detail:
+      "Reports generated automatically with Merkle-sealed audit trails. Six-year retention built in. Regulators get exactly what they ask for.",
     highlight: "Audit-ready",
+    metric: "6yr",
+    metricLabel: "Retention guaranteed",
+    color: "#f59e0b",
   },
   {
-    id: "03",
+    icon: Server,
     role: "IT Directors",
-    benefit:
-      "No new hardware. No network changes. Deploy on existing Cisco infrastructure.",
+    roleShort: "IT",
+    headline: "Existing Cisco infra. Zero CapEx.",
+    detail:
+      "No new hardware. No network re-architecture. No agents to manage. Deploy on a test VLAN in minutes — not quarters.",
     highlight: "Zero CapEx",
+    metric: "0",
+    metricLabel: "New hardware required",
+    color: "#3b82f6",
   },
   {
-    id: "04",
+    icon: ShieldCheck,
     role: "Risk Managers",
-    benefit: "Formal verification. Mathematical proof. Deterministic response. No AI. No guessing.",
+    roleShort: "Risk",
+    headline: "No AI. Mathematical proof.",
+    detail:
+      "Formal deterministic verification. Every decision is reproducible and explainable. Zero false positives. Insurance carriers accept the reports.",
     highlight: "Verifiable",
+    metric: "0",
+    metricLabel: "False positives",
+    color: "#10b981",
   },
 ]
 
+const panelVariants = {
+  enter: { opacity: 0, x: 16, filter: "blur(4px)" },
+  center: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+  exit: {
+    opacity: 0,
+    x: -16,
+    filter: "blur(4px)",
+    transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
 export function AudienceSection() {
+  const [active, setActive] = useState(0)
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const inView = useInView(sectionRef, { once: true, margin: "-60px" })
+
+  const current = AUDIENCES[active]
+  const Icon = current.icon
+
   return (
-    <AnimatedSection className="px-4 sm:px-6 md:px-8 lg:px-12 section-padding text-secondary-foreground relative z-10">
-      <div className="max-w-5xl mx-auto">
-        <div className="mb-10 md:mb-12 text-center">
-          <span className="text-micro font-mono text-secondary-foreground/60">Roles</span>
-          <h2 className="text-h2 mt-3 text-secondary-foreground">
-            Who Needs Listrum
+    <AnimatedSection className="relative z-10 section-glow-purple">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-24 md:py-32">
+
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="mb-12"
+        >
+          <div className="font-mono text-[10px] tracking-widest uppercase text-secondary-foreground/30 mb-3">
+            Roles
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground tracking-tight leading-tight">
+            Built for the people responsible
+            <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-foreground/70 to-secondary-foreground/40">
+              {" "}when things go wrong.
+            </span>
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Audience Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">
-          {audiences.map((audience, index) => {
-            const Icon = [Clock, FileText, Server, ShieldCheck][index]
-            return (
-              <Card
-                key={audience.id}
-                className="group relative flex flex-col h-full hover:shadow-md transition-shadow duration-200 bg-secondary-foreground/5 border-secondary-foreground/10"
-              >
-                <CardHeader className="p-3 md:p-6 pb-0 md:pb-0">
-                  <CardTitle className="text-h3 text-primary leading-tight">
-                    {audience.role}
-                  </CardTitle>
-                </CardHeader>
+        {/* ── 2-col layout: role list | featured panel ─── */}
+        <motion.div
+          ref={sectionRef}
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="grid md:grid-cols-[220px_1fr] gap-6 md:gap-10"
+        >
+          {/* LEFT — role selector list */}
+          <div className="flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 scrollbar-hide">
+            {AUDIENCES.map((a, i) => {
+              const RoleIcon = a.icon
+              const isActive = active === i
+              return (
+                <button
+                  key={a.role}
+                  onClick={() => setActive(i)}
+                  className="relative flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 flex-shrink-0 md:flex-shrink group"
+                  style={{
+                    backgroundColor: isActive ? `${a.color}0f` : "transparent",
+                    border: `1px solid ${isActive ? `${a.color}30` : "transparent"}`,
+                  }}
+                >
+                  {/* Active bar */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="role-bar"
+                      className="absolute left-0 top-2 bottom-2 w-[3px] rounded-full"
+                      style={{ backgroundColor: a.color }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  )}
 
-                <CardContent className="p-3 md:p-6 flex flex-col flex-grow pt-2 md:pt-2">
-                  <p className="text-body-sm text-secondary-foreground/80 mb-3 md:mb-4 flex-grow leading-relaxed">
-                    {audience.benefit}
-                  </p>
+                  <RoleIcon
+                    className="w-4 h-4 flex-shrink-0 transition-colors"
+                    style={{ color: isActive ? a.color : "rgba(255,255,255,0.3)" }}
+                  />
 
-                  <div className="mt-auto pt-2 md:pt-3 border-t border-secondary-foreground/10">
-                    <div className="flex items-center gap-2">
-                      <div className="p-1 md:p-1.5 rounded-md bg-white/5 group-hover:bg-primary/10 transition-colors flex-shrink-0">
-                        <Icon className="w-3 h-3 md:w-4 md:h-4 text-secondary-foreground/80 group-hover:text-primary transition-colors" />
+                  <div className="min-w-0">
+                    <div
+                      className="text-xs font-semibold transition-colors truncate"
+                      style={{
+                        color: isActive ? a.color : "rgba(255,255,255,0.45)",
+                      }}
+                    >
+                      {a.role}
+                    </div>
+                    {isActive && (
+                      <div className="text-[9px] font-mono uppercase tracking-widest mt-0.5" style={{ color: `${a.color}80` }}>
+                        {a.highlight}
                       </div>
-                      <div className="min-w-0">
-                        <span className="text-ui-xs font-medium text-secondary-foreground truncate block">
-                          {audience.highlight}
-                        </span>
+                    )}
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* RIGHT — featured panel */}
+          <div className="relative min-h-[280px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                variants={panelVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="absolute inset-0 rounded-xl border overflow-hidden"
+                style={{
+                  borderColor: `${current.color}20`,
+                  backgroundColor: `${current.color}06`,
+                }}
+              >
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-xl"
+                  style={{
+                    background: `linear-gradient(90deg, ${current.color}00, ${current.color}80, ${current.color}00)`,
+                  }}
+                />
+
+                <div className="p-6 md:p-8 h-full flex flex-col justify-between">
+                  <div className="space-y-4">
+                    {/* Role + icon header */}
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center"
+                        style={{ backgroundColor: `${current.color}14`, border: `1px solid ${current.color}28` }}
+                      >
+                        <Icon className="w-5 h-5" style={{ color: current.color }} />
+                      </div>
+                      <div>
+                        <div className="text-xs font-mono uppercase tracking-widest" style={{ color: `${current.color}90` }}>
+                          {current.role}
+                        </div>
                       </div>
                     </div>
+
+                    {/* Headline */}
+                    <h3 className="text-xl md:text-2xl font-bold text-secondary-foreground leading-snug">
+                      {current.headline}
+                    </h3>
+
+                    {/* Detail */}
+                    <p className="text-sm text-secondary-foreground/50 leading-relaxed">
+                      {current.detail}
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
-            )
-          })}
+
+                  {/* Bottom row: metric + CTA */}
+                  <div className="flex items-end justify-between mt-6 pt-5 border-t border-white/[0.05]">
+                    <div>
+                      <div
+                        className="text-3xl font-black font-mono"
+                        style={{ color: current.color }}
+                      >
+                        {current.metric}
+                      </div>
+                      <div className="text-[10px] text-secondary-foreground/35 uppercase tracking-widest font-mono mt-0.5">
+                        {current.metricLabel}
+                      </div>
+                    </div>
+
+                    <button
+                      className="flex items-center gap-1.5 text-xs font-mono font-semibold px-4 py-2 rounded-lg transition-all hover:gap-2.5"
+                      style={{
+                        color: current.color,
+                        backgroundColor: `${current.color}12`,
+                        border: `1px solid ${current.color}25`,
+                      }}
+                    >
+                      Learn more
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        {/* Step indicator dots */}
+        <div className="flex justify-center gap-2 mt-8 md:hidden">
+          {AUDIENCES.map((a, i) => (
+            <button
+              key={a.role}
+              onClick={() => setActive(i)}
+              className="w-1.5 h-1.5 rounded-full transition-all duration-300"
+              style={{
+                backgroundColor: active === i ? a.color : "rgba(255,255,255,0.2)",
+                transform: active === i ? "scale(1.4)" : "scale(1)",
+              }}
+            />
+          ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-body text-secondary-foreground/80 max-w-3xl mx-auto">
-            One platform. Four roles. Zero ambiguity.
-          </p>
-        </div>
       </div>
     </AnimatedSection>
   )
 }
-
-
