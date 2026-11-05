@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type ReactNode } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import { GripVertical } from "lucide-react"
 
 interface CompareSliderProps {
@@ -12,9 +12,26 @@ interface CompareSliderProps {
   overlayName: string
 }
 
-/** Before/after reveal driven by a native range input, so keyboard, touch and screen readers work for free. */
+const WIDE_QUERY = "(min-width: 1024px)"
+
+/**
+ * Before/after reveal driven by a native range input, so keyboard, touch and screen readers work for free.
+ * The two diagram layers only mount on wide screens; phones never build or hydrate that DOM.
+ */
 export function CompareSlider({ base, overlay, label, overlayName }: CompareSliderProps) {
   const [position, setPosition] = useState(50)
+  const [wide, setWide] = useState(false)
+
+  useEffect(() => {
+    const query = window.matchMedia(WIDE_QUERY)
+    const sync = () => setWide(query.matches)
+    sync()
+    query.addEventListener("change", sync)
+    return () => query.removeEventListener("change", sync)
+  }, [])
+
+  if (!wide) return <div aria-hidden="true" className="h-[32.5rem] rounded-tile border border-graphite-700" />
+
   return (
     <div className="relative h-[32.5rem] overflow-hidden rounded-tile border border-graphite-700 select-none">
       <div className="absolute inset-0">{base}</div>
