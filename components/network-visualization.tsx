@@ -1,10 +1,8 @@
 "use client"
 
-import { useEffect, useState, useRef, useCallback } from "react"
+import { useEffect, useState, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import {
-  Monitor, Wifi, Server,
-  Radio, Cpu, HeartPulse, Syringe,
   ChevronRight
 } from "lucide-react"
 
@@ -29,15 +27,6 @@ interface FlowEvent {
   timestamp: string
   risk: "safe" | "alert"
 }
-
-const DEVICE_CONFIG = {
-  workstation: { icon: Monitor, color: "#3b82f6" },
-  imaging: { icon: Cpu, color: "#8b5cf6" },
-  infusion: { icon: Syringe, color: "#10b981" },
-  monitor: { icon: HeartPulse, color: "#f59e0b" },
-  server: { icon: Server, color: "#ef4444" },
-  iot: { icon: Wifi, color: "#6b7280" },
-} as const
 
 const VLAN_COLORS: Record<string, string> = {
   ICU: "#ef4444",
