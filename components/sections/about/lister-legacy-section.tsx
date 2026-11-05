@@ -7,7 +7,7 @@ export function ListerLegacySection() {
       <div className="grid gap-8 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-12">
         <div>
           <p className="eyebrow">{listerLegacy.eyebrow}</p>
-          <p aria-hidden="true" className="mt-3 font-mono text-6xl font-medium leading-none text-graphite-600">
+          <p aria-hidden="true" className="mt-3 font-mono text-6xl font-medium leading-none text-steel-400">
             {listerLegacy.year}
           </p>
         </div>
