@@ -5,8 +5,9 @@ const nextConfig = {
   trailingSlash: true,
   // Lint runs as its own gate (bun run lint); the build should not re-run it.
   eslint: { ignoreDuringBuilds: true },
-  // Inline the (small) Tailwind stylesheet so first paint does not wait on a CSS request.
-  experimental: { inlineCss: true },
+  // The stylesheet ships as its own file. Inlining it (experimental.inlineCss) copies it twice into
+  // every HTML document (a <style> tag plus the RSC payload), which pushed the /about document past
+  // one TCP round trip on a cold mobile connection.
 }
 
 export default nextConfig
