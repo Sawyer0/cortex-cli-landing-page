@@ -1,6 +1,7 @@
 /*
  * Listrum Mono (IBM Plex Mono Regular subset, SIL OFL 1.1; see OFL.txt and SUBSET.md).
- * Embedded as a data URI so the labels above the fold never wait on a second font request.
+ * Embedded as a data URI in the site stylesheet, so the labels above the fold never wait on a font
+ * request chained behind it.
  * Generated from plex-mono-subset-400.woff2; regenerate with the command in SUBSET.md.
  */
 @font-face {
