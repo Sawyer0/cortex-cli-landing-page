@@ -47,13 +47,13 @@ export function PhilosophySection() {
             )
           })}
         </ol>
-        <aside className="mt-8 rounded-tile border border-graphite-700 border-l-2 border-l-safety-500 bg-graphite-800 p-5">
+        <div className="mt-8 rounded-tile border border-graphite-700 border-l-2 border-l-safety-500 bg-graphite-800 p-5">
           <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-safety-400">
             <AlertTriangle aria-hidden="true" className="h-3.5 w-3.5" />
             {philosophy.rejectAi.label}
           </p>
           <p className="mt-2 text-sm leading-relaxed text-steel-200">{philosophy.rejectAi.text}</p>
-        </aside>
+        </div>
       </div>
     </SectionShell>
   )

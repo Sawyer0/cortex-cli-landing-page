@@ -29,13 +29,13 @@ export function VisibilityGapSection() {
               {paragraph}
             </p>
           ))}
-          <aside className="rounded-tile border border-graphite-700 border-l-safety-500 border-l-2 bg-graphite-800 p-5">
+          <div className="rounded-tile border border-graphite-700 border-l-safety-500 border-l-2 bg-graphite-800 p-5">
             <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-safety-400">
               <Eye aria-hidden="true" className="h-3.5 w-3.5" />
               {visibilityGap.callout.label}
             </p>
             <p className="mt-2 text-sm leading-relaxed text-steel-200">{visibilityGap.callout.text}</p>
-          </aside>
+          </div>
           <p className="text-base leading-relaxed text-steel-200">{visibilityGap.closing}</p>
         </div>
       </div>
