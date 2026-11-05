@@ -1,6 +1,6 @@
 import { HeroSection } from "@/components/sections/home/hero-section"
 import { VisibilitySection } from "@/components/sections/home/visibility-section"
-import { SolutionSection } from "@/components/solution-section"
+import { DetectionSection } from "@/components/sections/home/detection-section"
 import { SecuritySection } from "@/components/security-section"
 import { AudienceSection } from "@/components/audience-section"
 import { CTASection } from "@/components/cta-section"
@@ -16,7 +16,7 @@ export default function HomePage() {
       <main id="main" className="relative">
         <HeroSection />
         <VisibilitySection />
-        <SolutionSection />
+        <DetectionSection />
         <SecuritySection />
         <AudienceSection />
         <CTASection />
