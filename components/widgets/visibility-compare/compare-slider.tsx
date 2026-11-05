@@ -1,24 +1,26 @@
 "use client"
 
-import { useEffect, useState, type ReactNode } from "react"
+import { useEffect, useState } from "react"
+import dynamic from "next/dynamic"
 import { GripVertical } from "lucide-react"
 
 interface CompareSliderProps {
-  /** Bottom layer, revealed on the right of the divider. */
-  base: ReactNode
-  /** Top layer, revealed on the left of the divider. */
-  overlay: ReactNode
   label: string
   overlayName: string
 }
+
+// The diagram layers are a separate chunk, fetched only once a wide screen actually renders them.
+const ComparisonLayer = dynamic(() => import("./comparison-layer").then((module) => module.ComparisonLayer), {
+  ssr: false,
+})
 
 const WIDE_QUERY = "(min-width: 1024px)"
 
 /**
  * Before/after reveal driven by a native range input, so keyboard, touch and screen readers work for free.
- * The two diagram layers only mount on wide screens; phones never build or hydrate that DOM.
+ * The two diagram layers only mount on wide screens; phones never download, build or hydrate them.
  */
-export function CompareSlider({ base, overlay, label, overlayName }: CompareSliderProps) {
+export function CompareSlider({ label, overlayName }: CompareSliderProps) {
   const [position, setPosition] = useState(50)
   const [wide, setWide] = useState(false)
 
@@ -34,9 +36,11 @@ export function CompareSlider({ base, overlay, label, overlayName }: CompareSlid
 
   return (
     <div className="relative h-[32.5rem] overflow-hidden rounded-tile border border-graphite-700 select-none">
-      <div className="absolute inset-0">{base}</div>
+      <div className="absolute inset-0">
+        <ComparisonLayer tone="legacy" />
+      </div>
       <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-        {overlay}
+        <ComparisonLayer tone="listrum" />
       </div>
       <input
         type="range"
