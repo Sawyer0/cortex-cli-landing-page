@@ -1,7 +1,7 @@
 import { HeroSection } from "@/components/sections/home/hero-section"
 import { VisibilitySection } from "@/components/sections/home/visibility-section"
 import { DetectionSection } from "@/components/sections/home/detection-section"
-import { SecuritySection } from "@/components/security-section"
+import { DeploymentSection } from "@/components/sections/home/deployment-section"
 import { AudienceSection } from "@/components/audience-section"
 import { CTASection } from "@/components/cta-section"
 import { SiteFooter } from "@/components/layout/site-footer"
@@ -17,7 +17,7 @@ export default function HomePage() {
         <HeroSection />
         <VisibilitySection />
         <DetectionSection />
-        <SecuritySection />
+        <DeploymentSection />
         <AudienceSection />
         <CTASection />
       </main>
