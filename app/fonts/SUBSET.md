@@ -2,7 +2,8 @@
 
 Both files are modified versions of IBM Plex (SIL OFL 1.1, see `OFL.txt`). Because "Plex" is a
 Reserved Font Name, the subsets are renamed internally to "Listrum Sans" and "Listrum Mono"; the
-site's CSS refers to them through `next/font/local` in `app/layout.tsx`.
+site loads the sans subset through `next/font/local` in `app/layout.tsx`. The mono subset is small
+enough to embed: `listrum-mono.css` carries it as a base64 data URI, so it needs no request of its own.
 
 - `plex-sans-subset-wght-400-700.woff2`: IBM Plex Sans variable, `wght` axis limited to 400–700
   (the only weights the site uses).
@@ -22,3 +23,9 @@ pyftsubset IBMPlexMono-Regular.woff2 --unicodes="$U" --flavor=woff2 --no-hinting
 ```
 
 then rename the `name` table entries (IDs 1, 3, 4, 6, 16) away from "Plex".
+
+After regenerating the mono subset, rebuild the embedded copy:
+
+```sh
+python3 -c 'import base64,re,pathlib as p; c=p.Path("listrum-mono.css"); b=base64.b64encode(p.Path("plex-mono-subset-400.woff2").read_bytes()).decode(); c.write_text(re.sub(r"base64,[A-Za-z0-9+/=]+", "base64,"+b, c.read_text()))'
+```

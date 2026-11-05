@@ -3,26 +3,18 @@ import type { ReactNode } from "react"
 import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { site } from "@/content/site"
+import "./fonts/listrum-mono.css"
 import "./globals.css"
 
 // IBM Plex (SIL OFL 1.1, see app/fonts/OFL.txt), self-hosted and subset (app/fonts/SUBSET.md) so the
-// fonts the first paint needs are small and builds never depend on Google Fonts.
+// fonts the first paint needs are small and builds never depend on Google Fonts. The mono subset is
+// embedded in app/fonts/listrum-mono.css instead of being fetched as a separate file.
 const plexSans = localFont({
   src: [{ path: "./fonts/plex-sans-subset-wght-400-700.woff2", weight: "400 700", style: "normal" }],
   variable: "--font-plex-sans",
   display: "swap",
   fallback: ["system-ui", "Arial", "sans-serif"],
   adjustFontFallback: "Arial",
-})
-
-const plexMono = localFont({
-  src: [{ path: "./fonts/plex-mono-subset-400.woff2", weight: "400", style: "normal" }],
-  variable: "--font-plex-mono",
-  display: "swap",
-  fallback: ["ui-monospace", "Menlo", "monospace"],
-  adjustFontFallback: false,
-  // Mono only styles labels; keep the preload budget for the hero headline.
-  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -59,7 +51,7 @@ const analyticsEnabled = process.env.VERCEL === "1"
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${plexSans.variable} ${plexMono.variable}`}>
+    <html lang="en" className={plexSans.variable}>
       <body>
         <a
           href="#main"
