@@ -17,7 +17,7 @@ export function WorkflowTimeline() {
               <span className="flex h-10 w-10 items-center justify-center rounded-tile border border-safety-500/60 font-mono text-sm text-safety-400">
                 {step.step}
               </span>
-              <span className="font-mono text-2xl font-medium text-steel-50">{step.time}</span>
+              <span className="font-mono text-2xl text-steel-50">{step.time}</span>
             </div>
             <h3 className="mt-5 font-mono text-sm uppercase tracking-[0.16em] text-safety-400">{step.title}</h3>
             <p className="mt-2 text-sm leading-relaxed text-steel-200">{step.description}</p>

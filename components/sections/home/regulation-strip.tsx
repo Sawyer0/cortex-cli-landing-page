@@ -7,7 +7,7 @@ export function RegulationStrip() {
       <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden rounded-tile border border-graphite-700 bg-graphite-700 md:grid-cols-4">
         {regulations.items.map((item) => (
           <div key={item.name} className="bg-graphite-900 px-4 py-5 text-center">
-            <dt className="font-mono text-base font-medium text-safety-400">{item.name}</dt>
+            <dt className="font-mono text-base text-safety-400">{item.name}</dt>
             <dd className="font-mono text-sm text-steel-50">{item.code}</dd>
             <dd className="mt-1 text-xs uppercase tracking-wider text-steel-400">{item.detail}</dd>
           </div>

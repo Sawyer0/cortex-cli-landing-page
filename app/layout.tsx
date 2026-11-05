@@ -1,22 +1,27 @@
 import type { Metadata, Viewport } from "next"
 import type { ReactNode } from "react"
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { site } from "@/content/site"
 import "./globals.css"
 
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
+// IBM Plex (SIL OFL 1.1, see app/fonts/OFL.txt), self-hosted so builds never depend on Google Fonts.
+const plexSans = localFont({
+  src: [{ path: "./fonts/ibm-plex-sans-latin-variable.woff2", weight: "100 700", style: "normal" }],
   variable: "--font-plex-sans",
   display: "swap",
+  fallback: ["system-ui", "Arial", "sans-serif"],
+  adjustFontFallback: "Arial",
 })
 
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const plexMono = localFont({
+  src: [{ path: "./fonts/ibm-plex-mono-latin-400.woff2", weight: "400", style: "normal" }],
   variable: "--font-plex-mono",
   display: "swap",
+  fallback: ["ui-monospace", "Menlo", "monospace"],
+  adjustFontFallback: false,
+  // Mono only styles labels; keep the preload budget for the hero headline.
+  preload: false,
 })
 
 export const metadata: Metadata = {

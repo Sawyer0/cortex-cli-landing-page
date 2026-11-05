@@ -29,7 +29,7 @@ function ThreatList() {
               <span className="block h-full bg-safety-500" style={{ width: `${threat.coverage}%` }} />
             </span>
             <p className="col-start-3 row-start-1 text-right sm:col-start-auto sm:row-start-auto">
-              <span className="block font-mono text-lg font-medium leading-none text-safety-400">{threat.metric}</span>
+              <span className="block font-mono text-lg leading-none text-safety-400">{threat.metric}</span>
               <span className="mt-1 block font-mono text-xs uppercase tracking-wider text-steel-400">{threat.metricLabel}</span>
             </p>
           </li>

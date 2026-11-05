@@ -48,7 +48,7 @@ export function VisibilitySection() {
       <p className="mx-auto mt-10 flex max-w-xl items-start gap-3 rounded-tile border border-graphite-700 bg-graphite-800 px-5 py-3 text-sm text-steel-200 sm:items-center">
         <AlertTriangle aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-safety-400 sm:mt-0" />
         <span>
-          {visibility.insight.lead} <strong className="font-semibold text-steel-50">{visibility.insight.emphasis}</strong>
+          {visibility.insight.lead} <strong className="font-bold text-steel-50">{visibility.insight.emphasis}</strong>
         </span>
       </p>
     </SectionShell>

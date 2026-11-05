@@ -50,7 +50,7 @@ export function DeviceInventory() {
           ).map(([term, value, tone]) => (
             <div key={term}>
               <dt className="text-xs uppercase text-steel-400">{term}</dt>
-              <dd className={`text-base font-medium tabular-nums ${tone}`}>{value}</dd>
+              <dd className={`text-base tabular-nums ${tone}`}>{value}</dd>
             </div>
           ))}
         </dl>

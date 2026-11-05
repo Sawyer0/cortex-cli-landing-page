@@ -14,7 +14,7 @@ export function SiteHeader({ onHomePage }: { onHomePage: boolean }) {
       <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" aria-label="Listrum home" className="flex min-h-11 items-center gap-3">
           <ElementTile size="sm" />
-          <span className="font-mono text-base font-medium tracking-[0.22em] text-steel-50">LISTRUM</span>
+          <span className="font-mono text-base tracking-[0.22em] text-steel-50">LISTRUM</span>
         </Link>
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1">
@@ -32,7 +32,7 @@ export function SiteHeader({ onHomePage }: { onHomePage: boolean }) {
               <li className="ml-2">
                 <SiteLink
                   href={contact.href}
-                  className="inline-flex min-h-11 items-center rounded-tile border border-graphite-600 px-4 font-mono text-xs font-medium uppercase tracking-[0.14em] text-steel-50 transition-colors hover:border-safety-400 hover:text-safety-400"
+                  className="inline-flex min-h-11 items-center rounded-tile border border-graphite-600 px-4 font-mono text-xs uppercase tracking-[0.14em] text-steel-50 transition-colors hover:border-safety-400 hover:text-safety-400"
                 >
                   {contact.label}
                 </SiteLink>
