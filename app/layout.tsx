@@ -1,17 +1,18 @@
-import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google"
+import type { ReactNode } from "react"
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { site } from "@/content/site"
 import "./globals.css"
 
-const ibmPlexSans = IBM_Plex_Sans({
+const plexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-plex-sans",
   display: "swap",
 })
 
-const ibmPlexMono = IBM_Plex_Mono({
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-plex-mono",
@@ -19,45 +20,49 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Listrum (Ls-443) | Network Sterility for Healthcare",
-  description:
-    "Listrum deploys surgical-grade sterility at the network edge. Our deterministic agent treats ransomware as digital sepsis. Its formal verification ensures it never guesses.",
-  keywords: [
-    "ransomware prevention healthcare",
-    "NYSDOH 405.46 compliance",
-    "CIRCIA compliance software",
-    "healthcare cybersecurity",
-    "edge security Cisco IOx",
-    "deterministic threat detection",
-    "formal verification cybersecurity",
-    "hospital ransomware protection",
-    "72-hour incident reporting",
-    "network sterility",
-  ],
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  keywords: [...site.keywords],
+  applicationName: site.name,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Listrum: The Sterile Field",
-    description: "Stop ransomware at the edge. Deterministic compliance for NYSDOH 405.46 and CIRCIA. No cloud. No hallucinations.",
+    title: site.openGraph.title,
+    description: site.openGraph.description,
     type: "website",
+    url: "/",
+    siteName: site.name,
+    locale: "en_US",
   },
-  generator: 'v0.app'
+  twitter: {
+    card: "summary_large_image",
+    title: site.openGraph.title,
+    description: site.openGraph.description,
+  },
 }
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  themeColor: "#1e293b",
+  colorScheme: "dark",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+// Vercel Web Analytics only exists on Vercel deployments; elsewhere its script 404s.
+const analyticsEnabled = process.env.VERCEL === "1"
+
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} font-sans antialiased`}>
+    <html lang="en" className={`${plexSans.variable} ${plexMono.variable}`}>
+      <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-tile focus:bg-safety-500 focus:px-4 focus:py-3 focus:font-mono focus:text-sm focus:text-graphite-950"
+        >
+          Skip to content
+        </a>
         {children}
-        <Analytics />
+        {analyticsEnabled && <Analytics />}
       </body>
     </html>
   )
