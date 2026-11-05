@@ -18,7 +18,7 @@ env:
 jobs:
   checks:
     name: Lint, typecheck, unit tests, build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
   e2e:
     name: End-to-end (Playwright + axe)
     needs: checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -73,7 +73,7 @@ jobs:
   lighthouse:
     name: Lighthouse (mobile)
     needs: checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -114,4 +114,5 @@ jobs:
         with:
           name: lighthouse-reports
           path: .lighthouseci
+          include-hidden-files: true
           retention-days: 7
