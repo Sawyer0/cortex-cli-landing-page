@@ -10,7 +10,7 @@ export function SiteHeader({ onHomePage }: { onHomePage: boolean }) {
   const sectionLinks = links.slice(0, -1)
 
   return (
-    <header className="sticky top-0 z-40 border-b border-graphite-700 bg-graphite-900/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-graphite-700 bg-graphite-900">
       <div className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" aria-label="Listrum home" className="flex min-h-11 items-center gap-3">
           <ElementTile size="sm" />
