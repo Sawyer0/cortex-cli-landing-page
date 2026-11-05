@@ -6,14 +6,16 @@ import "./globals.css"
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-ibm-plex-sans",
+  weight: ["400", "600", "700"],
+  variable: "--font-plex-sans",
+  display: "swap",
 })
 
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-ibm-plex-mono",
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
