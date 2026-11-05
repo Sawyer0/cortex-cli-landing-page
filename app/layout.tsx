@@ -21,8 +21,8 @@ const plexMono = localFont({
   display: "swap",
   fallback: ["ui-monospace", "Menlo", "monospace"],
   adjustFontFallback: false,
-  // Preloaded too: the hero badge, CTAs and inventory use Mono, and discovering it only after style
-  // calculation put a second font round trip on the path to first paint.
+  // Mono only styles labels; keep the preload budget for the hero headline.
+  preload: false,
 })
 
 export const metadata: Metadata = {
