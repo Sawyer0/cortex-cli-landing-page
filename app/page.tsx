@@ -1,5 +1,5 @@
 import { HeroSection } from "@/components/sections/home/hero-section"
-import { ProblemSection } from "@/components/problem-section"
+import { VisibilitySection } from "@/components/sections/home/visibility-section"
 import { SolutionSection } from "@/components/solution-section"
 import { SecuritySection } from "@/components/security-section"
 import { AudienceSection } from "@/components/audience-section"
@@ -15,7 +15,7 @@ export default function HomePage() {
       <SiteHeader onHomePage />
       <main id="main" className="relative">
         <HeroSection />
-        <ProblemSection />
+        <VisibilitySection />
         <SolutionSection />
         <SecuritySection />
         <AudienceSection />
