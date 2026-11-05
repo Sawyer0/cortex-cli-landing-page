@@ -27,7 +27,7 @@
         "./*"
       ]
     },
-    "noUncheckedIndexedAccess": false,
+    "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "forceConsistentCasingInFileNames": true
   },
