@@ -24,11 +24,11 @@ export function DeploymentSection() {
             return (
               <li key={zero.title} className="flex gap-5 rounded-tile border border-graphite-700 bg-graphite-800 p-5">
                 <span className="flex h-16 w-14 shrink-0 flex-col items-center justify-center rounded-tile border border-graphite-600 bg-graphite-900">
-                  <span className="font-mono text-2xl font-medium leading-none text-safety-400">{zero.value}</span>
+                  <span className="font-mono text-2xl leading-none text-safety-400">{zero.value}</span>
                   <Icon aria-hidden="true" className="mt-1.5 h-3.5 w-3.5 text-steel-400" />
                 </span>
                 <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-steel-50">
+                  <h3 className="text-base font-bold text-steel-50">
                     <span className="sr-only">{zero.value} </span>
                     {zero.title}
                   </h3>
@@ -44,7 +44,7 @@ export function DeploymentSection() {
         {deployment.stats.map((stat) => (
           <div key={stat.label} className="flex flex-col-reverse bg-graphite-900 px-4 py-5 text-center">
             <dt className="mt-1 font-mono text-xs uppercase tracking-wider text-steel-400">{stat.label}</dt>
-            <dd className="font-mono text-2xl font-medium text-steel-50">{stat.value}</dd>
+            <dd className="font-mono text-2xl text-steel-50">{stat.value}</dd>
           </div>
         ))}
       </dl>

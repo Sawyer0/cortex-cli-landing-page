@@ -7,7 +7,7 @@ export function ListerLegacySection() {
       <div className="grid gap-8 md:grid-cols-[12rem_minmax(0,1fr)] md:gap-12">
         <div>
           <p className="eyebrow">{listerLegacy.eyebrow}</p>
-          <p aria-hidden="true" className="mt-3 font-mono text-6xl font-medium leading-none text-steel-400">
+          <p aria-hidden="true" className="mt-3 font-mono text-6xl leading-none text-steel-400">
             {listerLegacy.year}
           </p>
         </div>
@@ -27,7 +27,7 @@ export function ListerLegacySection() {
             {listerLegacy.outcomes.map((outcome) => (
               <div key={outcome.label} className="flex flex-col-reverse bg-graphite-900 px-5 py-4">
                 <dt className="mt-1 font-mono text-xs uppercase tracking-wider text-steel-400">{outcome.label}</dt>
-                <dd className="font-mono text-2xl font-medium text-steel-50">{outcome.value}</dd>
+                <dd className="font-mono text-2xl text-steel-50">{outcome.value}</dd>
               </div>
             ))}
           </dl>

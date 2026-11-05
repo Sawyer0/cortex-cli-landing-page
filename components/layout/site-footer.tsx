@@ -10,7 +10,7 @@ export function SiteFooter({ onHomePage }: { onHomePage: boolean }) {
           <div className="flex items-center gap-3">
             <ElementTile size="sm" />
             <div>
-              <p className="font-mono font-medium tracking-[0.22em] text-steel-50">LISTRUM</p>
+              <p className="font-mono tracking-[0.22em] text-steel-50">LISTRUM</p>
               <p className="text-sm text-steel-400">{site.tagline}</p>
             </div>
           </div>

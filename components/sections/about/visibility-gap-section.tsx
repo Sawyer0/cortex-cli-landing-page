@@ -16,10 +16,10 @@ export function VisibilityGapSection() {
           {visibilityGap.stats.map((stat) => (
             <div key={stat.value} className="flex flex-col-reverse gap-1 border-l-2 border-safety-500 pl-4">
               <dt>
-                <span className="block text-sm font-semibold uppercase tracking-wider text-steel-200">{stat.label}</span>
+                <span className="block text-sm font-bold uppercase tracking-wider text-steel-200">{stat.label}</span>
                 <span className="block font-mono text-xs uppercase tracking-wider text-steel-400">{stat.sub}</span>
               </dt>
-              <dd className="font-mono text-6xl font-medium leading-none text-safety-400">{stat.value}</dd>
+              <dd className="font-mono text-6xl leading-none text-safety-400">{stat.value}</dd>
             </div>
           ))}
         </dl>

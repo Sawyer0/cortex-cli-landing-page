@@ -43,7 +43,7 @@ export function RoleTabs({ learnMoreHref }: { learnMoreHref: string }) {
               }`}
             >
               <Icon aria-hidden="true" className={`h-4 w-4 shrink-0 ${active ? "text-safety-400" : "text-steel-400"}`} />
-              <span className="font-semibold">{role.role}</span>
+              <span className="font-bold">{role.role}</span>
             </button>
           )
         })}
@@ -69,7 +69,7 @@ export function RoleTabs({ learnMoreHref }: { learnMoreHref: string }) {
             <p className="mt-3 text-base leading-relaxed text-steel-200">{role.detail}</p>
             <div className="mt-6 flex flex-wrap items-end justify-between gap-4 border-t border-graphite-700 pt-5">
               <p>
-                <span className="block font-mono text-3xl font-medium text-safety-400">{role.metric}</span>
+                <span className="block font-mono text-3xl text-safety-400">{role.metric}</span>
                 <span className="block font-mono text-xs uppercase tracking-wider text-steel-400">{role.metricLabel}</span>
               </p>
               <SiteLink

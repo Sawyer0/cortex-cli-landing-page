@@ -20,7 +20,7 @@ export function SymbolSection() {
           <dl className="mt-6 border-t border-graphite-700">
             {symbol.meanings.map((meaning) => (
               <div key={meaning.symbol} className="flex items-center gap-5 border-b border-graphite-700 py-3.5">
-                <dt className="w-14 shrink-0 font-mono text-2xl font-medium text-safety-400">{meaning.symbol}</dt>
+                <dt className="w-14 shrink-0 font-mono text-2xl text-safety-400">{meaning.symbol}</dt>
                 <dd className="text-sm leading-snug text-steel-200">{meaning.label}</dd>
               </div>
             ))}

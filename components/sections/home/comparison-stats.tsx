@@ -39,7 +39,7 @@ export function ComparisonStats({ side, tone }: { side: ComparisonSide; tone: Co
                 <Icon aria-hidden="true" className={`h-4 w-4 ${text}`} />
               </span>
               <span>
-                <span className={`block font-mono text-sm font-medium tracking-wider ${text}`}>{stat.value}</span>
+                <span className={`block font-mono text-sm tracking-wider ${text}`}>{stat.value}</span>
                 <span className="block text-xs uppercase tracking-wider text-steel-400">{stat.label}</span>
               </span>
             </li>
