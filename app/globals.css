@@ -1,5 +1,41 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+
+/*
+ * Listrum design tokens.
+ * Source of truth: business/BRAND-BIBLE.md ("Deep Slate/Graphite" + "Safety Orange",
+ * periodic-table identity, clinical precision). Hex values come from the pitch deck,
+ * the bible's secondary reference: graphite #1e293b, panels #2d394f / #364152,
+ * steel text #94a3b8 / #e1e7f0, safety orange #f97316, IBM Plex.
+ * Every text/background pair below meets WCAG AA (4.5:1) at body size.
+ */
+@theme {
+  --color-graphite-950: #0f172a;
+  --color-graphite-900: #1e293b;
+  --color-graphite-800: #2d394f;
+  --color-graphite-700: #364152;
+  --color-graphite-600: #4b5563;
+  --color-steel-400: #94a3b8;
+  --color-steel-200: #e1e7f0;
+  --color-steel-50: #f7fafc;
+  --color-safety-500: #f97316;
+  --color-safety-400: #fb923c;
+  --color-critical: #fca5a5;
+
+
+  --radius-tile: 2px;
+
+  --animate-live-pulse: live-pulse 2s ease-in-out infinite;
+
+  @keyframes live-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -68,8 +104,8 @@
 }
 
 @theme inline {
-  --font-sans: "IBM Plex Sans", "IBM Plex Sans Fallback", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", monospace;
+  --font-sans: var(--font-plex-sans), "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -377,4 +413,20 @@
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.12);
+}
+
+@utility lab-grid {
+  background-image:
+    linear-gradient(to right, rgb(148 163 184 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(148 163 184 / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-safety-400);
 }
