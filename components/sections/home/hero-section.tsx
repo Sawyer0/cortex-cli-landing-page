@@ -8,7 +8,7 @@ export function HeroSection() {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden">
       <div aria-hidden="true" className="lab-grid absolute inset-0" />
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-center lg:py-24">
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:py-24">
         <div>
           <p className="inline-flex rounded-tile border border-graphite-600 bg-graphite-900 px-3 py-1 font-mono text-xs tracking-[0.16em] text-steel-200">
             {hero.badge}
@@ -24,12 +24,12 @@ export function HeroSection() {
             {hero.headline.close}
           </h1>
           <p className="mt-6 max-w-lg text-base leading-relaxed text-steel-200 sm:text-lg">{hero.summary}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ActionLink href="#contact">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <ActionLink href="#contact" className="sm:px-5">
               {hero.primaryCta}
               <ChevronRight aria-hidden="true" className="h-4 w-4" />
             </ActionLink>
-            <ActionLink href={whitepaperHref} variant="secondary">
+            <ActionLink href={whitepaperHref} variant="secondary" className="sm:px-5">
               <FileText aria-hidden="true" className="h-4 w-4" />
               {hero.secondaryCta}
             </ActionLink>

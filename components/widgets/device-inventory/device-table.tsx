@@ -37,7 +37,7 @@ export function DeviceTable({ devices, selectedId, onToggle }: DeviceTableProps)
                 >
                   <span aria-hidden="true" className={`h-1.5 w-1.5 shrink-0 rounded-full ${statusDot[device.status]}`} />
                   <span>
-                    <span className="block font-mono text-steel-50">{device.id}</span>
+                    <span className="block whitespace-nowrap font-mono text-steel-50">{device.id}</span>
                     <span className="block text-steel-400">{device.name}</span>
                     <span className="sr-only">, status {device.status}</span>
                   </span>

@@ -20,7 +20,7 @@ export function ActionLink({ href, children, variant = "primary", className = ""
   return (
     <SiteLink
       href={href}
-      className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-tile px-6 text-center font-mono text-sm uppercase tracking-[0.12em] transition-colors ${variants[variant]} ${className}`}
+      className={`inline-flex min-h-12 items-center sm:whitespace-nowrap justify-center gap-2 rounded-tile px-6 text-center font-mono text-sm uppercase tracking-[0.12em] transition-colors ${variants[variant]} ${className}`}
     >
       {children}
     </SiteLink>

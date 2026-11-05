@@ -33,7 +33,7 @@ export function DeviceInventory() {
       ref={rootRef}
       role="region"
       aria-labelledby={`${idPrefix}-title`}
-      className="w-full min-w-0 rounded-tile border border-graphite-700 bg-graphite-800"
+      className="@container w-full min-w-0 rounded-tile border border-graphite-700 bg-graphite-800"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-graphite-700 px-4 py-3">
         <h2 id={`${idPrefix}-title`} className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-steel-200">
@@ -65,17 +65,17 @@ export function DeviceInventory() {
         idPrefix={idPrefix}
       />
 
-      <div className="grid md:grid-cols-[minmax(0,1fr)_15rem]">
+      <div className="grid @[40rem]:grid-cols-[minmax(0,1fr)_15rem]">
         <div
           id={`${idPrefix}-panel`}
           role="tabpanel"
           aria-labelledby={vlanTabId(idPrefix, vlanIndex)}
           tabIndex={0}
-          className="h-80 overflow-y-auto md:h-[22rem]"
+          className="h-80 overflow-y-auto md:h-64 @[40rem]:h-[22rem]"
         >
           <DeviceTable devices={visible} selectedId={selected?.id ?? null} onToggle={toggleDevice} />
         </div>
-        <div className="hidden min-h-0 flex-col border-l border-graphite-700 md:flex md:h-[22rem]">
+        <div className="hidden min-h-0 flex-col border-t border-graphite-700 md:flex md:h-48 @[40rem]:h-[22rem] @[40rem]:border-l @[40rem]:border-t-0">
           {selected && <DeviceDetail device={selected} />}
           <FlowFeed flows={flows} />
         </div>
