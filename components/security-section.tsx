@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion"
-import { Server, Cloud, Shield, Ban, CheckCircle } from "lucide-react"
+import { Cloud, Shield, Ban, CheckCircle } from "lucide-react"
 import { AnimatedSection } from "@/components/animated-section"
 
 const ZEROS = [

@@ -42,7 +42,7 @@ export function NetflowBackground({ className }: NetflowBackgroundProps) {
     let width = 0
     let height = 0
     let nodes: Node[] = []
-    let packets: Packet[] = []
+    const packets: Packet[] = []
 
     const colorPrimary = "217, 119, 6"   // Brand Orange (#d97706)
     const colorSecondary = "100, 116, 139" // Slate

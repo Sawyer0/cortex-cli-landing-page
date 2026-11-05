@@ -103,7 +103,7 @@ const PRINCIPLES = [
   },
 ]
 
-function PrincipleRow({ p, index }: { p: (typeof PRINCIPLES)[number]; index: number }) {
+function PrincipleRow({ p }: { p: (typeof PRINCIPLES)[number] }) {
   const [expanded, setExpanded] = useState(false)
   const Icon = p.icon
   return (
@@ -588,8 +588,8 @@ export default function AboutPage() {
               initial="hidden"
               animate={philosophyInView ? "show" : "hidden"}
             >
-              {PRINCIPLES.map((p, i) => (
-                <PrincipleRow key={p.num} p={p} index={i} />
+              {PRINCIPLES.map((p) => (
+                <PrincipleRow key={p.num} p={p} />
               ))}
 
               {/* Reject AI box */}

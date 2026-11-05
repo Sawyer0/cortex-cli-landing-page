@@ -12,6 +12,7 @@ import { Footer } from "@/components/footer"
 import { NetflowBackground } from "@/components/ui/netflow-background"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import Link from "next/link"
 
 const NAV_LINKS = [
   { href: "#detection", label: "Detection" },
@@ -29,7 +30,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 bg-secondary/80 backdrop-blur supports-[backdrop-filter]:bg-secondary/60 border-b border-white/5">
         <div className="px-4 sm:px-6 md:px-8 lg:px-12 h-14 sm:h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <div className="relative w-10 h-12 bg-secondary-foreground/10 border border-secondary-foreground/20 flex flex-col items-center justify-center">
               <span className="absolute top-0.5 left-1 text-[7px] font-medium text-carbon leading-none">443</span>
               <span className="text-xl font-bold text-primary leading-none mt-1">Ls</span>
@@ -38,7 +39,7 @@ export default function Home() {
             <span className="font-mono text-base sm:text-lg font-semibold tracking-tight text-secondary-foreground hidden sm:inline">
               LISTRUM
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-6">
